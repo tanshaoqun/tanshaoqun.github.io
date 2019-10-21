@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: python1date: 2019-09-29 22:32:02tags: Python—·">
+  <meta name="description" content="title: python1date: 2019-09-29 22:32:02tags: Python—· 删除member.remove(“name”)del member[n]member.pop()  //删除最后一个元素 切片member[n:m]   //输出n到m-1 reverse（数组翻转）不需要添加参数array.reverse() sortsort(func)sort(key">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://yoursite.com/2019/09/29/python1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="title: python1date: 2019-09-29 22:32:02tags: Python—·">
+<meta property="og:description" content="title: python1date: 2019-09-29 22:32:02tags: Python—· 删除member.remove(“name”)del member[n]member.pop()  //删除最后一个元素 切片member[n:m]   //输出n到m-1 reverse（数组翻转）不需要添加参数array.reverse() sortsort(func)sort(key">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-02T15:04:21.769Z">
+<meta property="og:updated_time" content="2019-10-19T09:16:25.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="title: python1date: 2019-09-29 22:32:02tags: Python—·">
+<meta name="twitter:description" content="title: python1date: 2019-09-29 22:32:02tags: Python—· 删除member.remove(“name”)del member[n]member.pop()  //删除最后一个元素 切片member[n:m]   //输出n到m-1 reverse（数组翻转）不需要添加参数array.reverse() sortsort(func)sort(key">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -161,6 +161,80 @@
       
         <hr>
 <p>title: python1<br>date: 2019-09-29 22:32:02<br>tags: Python<br>—·</p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>member.remove(“name”)<br>del member[n]<br>member.pop()  //删除最后一个元素</p>
+<h3 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h3><p>member[n:m]   //输出n到m-1</p>
+<h2 id="reverse（数组翻转）"><a href="#reverse（数组翻转）" class="headerlink" title="reverse（数组翻转）"></a>reverse（数组翻转）</h2><p>不需要添加参数<br>array.reverse()</p>
+<h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><p>sort(func)<br>sort(key)<br>sort(reverse=false/true) //需要逆排序时选择true</p>
+<h2 id="tuple（元组）"><a href="#tuple（元组）" class="headerlink" title="tuple（元组）"></a>tuple（元组）</h2><p>不可改变<br>[] :数组   （）：元组<br>添加元素：新元组=元组[:2]+(‘’,)+元组[2:]<br>tuple([interable]):把一个可迭代对象转换成一个元组</p>
+<h3 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h3><p>string.translate(str.maketrans(‘被替换的’,’替换的’))</p>
+<h3 id="format方法"><a href="#format方法" class="headerlink" title="format方法"></a>format方法</h3><p>“{0}…{n}”.format(n个参数)</p>
+<h3 id="zip（拉链）"><a href="#zip（拉链）" class="headerlink" title="zip（拉链）"></a>zip（拉链）</h3><p>a=[1,3,6,8,3]<br>b=[2,5,7]</p>
+<h3 id="收集函数"><a href="#收集函数" class="headerlink" title="收集函数"></a>收集函数</h3><p>函数名（*收集函数）</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><blockquote>
+<blockquote>
+<blockquote>
+<p>def funX(x):<br>    def funY(y):<br>        return x*y<br>    return funY</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>i=funX(8)<br>i(4)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a>lambda</h3><p>例1：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>lambda x:2<em>x+1<br>&lt;function <lambda> at 0x0000018B10295AE8&gt;<br>g=lambda x:2</lambda></em>x+1<br>g(5)<br>11</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>例2：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>lambda x,y:x+y<br>&lt;function <lambda> at 0x0000018B10295AE8&gt;<br>g=lambda x,y:x+y<br>g(1,2)<br>3</lambda></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h3><p>将任何非ture过滤掉<br>filter(筛选条件，筛选对象)<br>例1：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>filter(None,[1,0,False,True])<br>&lt;filter object at 0x0000018B102A6160&gt;<br>list(filter(None,[1,0,False,True]))<br>[1, True]<br>def add(x):<br>    return x%2</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>temp=range(10)<br>show=filter(add,temp)<br>list(show)<br>[1, 3, 5, 7, 9]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>例2：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>list(filter(lambda x:x%2,range(10)))<br>[1, 3, 5, 7, 9]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><p>映射，全都返回<br>例：</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>list(map(lambda x:x*2,range(10)))<br>[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>def factorial(n):<br>    result=1<br>    for i in range(1,n+1):<br>        result*=i</p>
+<pre><code>return result</code></pre><p>number=int(input(“请输入一个整数：”))<br>result=factorial(number)<br>print(“%d的阶乘是%d\n” %(number,result))</p>
+<h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>必须有终止条件<br>自己调用自己<br>def factorial(n):<br>    if n==1:<br>        return 1<br>    else:<br>        return n*factorial(n-1)</p>
+<p>number=int(input(“请输入一个整数：”))<br>result=factorial(number)<br>print(“%d的阶乘是：%d” %(number,result))</p>
 
       
 
@@ -264,8 +338,8 @@
     </a>
   
   
-    <a href="/2019/09/29/如何实现hexo部署博客到GitHub/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">实现hexo部署博客到GitHub</div>
+    <a href="/2019/09/29/我的第一篇博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的第一篇博客</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -391,11 +465,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Linux debug make</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Linux commands</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">搭建博客</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux-C 共享库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -403,7 +489,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux-C 共享库</a>
+                <a href="javascript:void(0)" class="js-tag color5">搭建博客</a>
               </li>
             
             <div class="clearfix"></div>

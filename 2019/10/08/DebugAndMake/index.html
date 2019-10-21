@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>实现hexo部署博客到GitHub | Hexo</title>
+  <title>DebugAndMake | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="打开cmd命令窗口检验node.js和npmd的安装（有版本号即安装成功)命令行：node -vnpm -v 安装hexo（我已经安装好了，此处不再赘述）命令行：npm install -g hexo 自定义一个文件夹blog（dir可查看文件路径）命令行：（此文件夹随时可删，重新下载文件便可）mkdir blog 初始化博客命令行：hexo init 启动博客命令行：hexo server （l">
-<meta name="keywords" content="搭建博客">
+  <meta name="description" content="调试cc -o 可执行文件 源文件./可执行文件 选择调试源码中： ifdef name代码 endif终端：cc -o 可执行文件 -Dname 源文件 gdb设置断点break n(linenumber)run info指令：查看断点数和显示 禁用断点：disable break n make需提供一个文件说明构建–makefile生成文件通常与项目其他源文件位于同一目录大型项目：可选择对项目">
+<meta name="keywords" content="Linux debug make">
 <meta property="og:type" content="article">
-<meta property="og:title" content="实现hexo部署博客到GitHub">
-<meta property="og:url" content="http://yoursite.com/2019/09/29/如何实现hexo部署博客到GitHub/index.html">
+<meta property="og:title" content="DebugAndMake">
+<meta property="og:url" content="http://yoursite.com/2019/10/08/DebugAndMake/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="打开cmd命令窗口检验node.js和npmd的安装（有版本号即安装成功)命令行：node -vnpm -v 安装hexo（我已经安装好了，此处不再赘述）命令行：npm install -g hexo 自定义一个文件夹blog（dir可查看文件路径）命令行：（此文件夹随时可删，重新下载文件便可）mkdir blog 初始化博客命令行：hexo init 启动博客命令行：hexo server （l">
+<meta property="og:description" content="调试cc -o 可执行文件 源文件./可执行文件 选择调试源码中： ifdef name代码 endif终端：cc -o 可执行文件 -Dname 源文件 gdb设置断点break n(linenumber)run info指令：查看断点数和显示 禁用断点：disable break n make需提供一个文件说明构建–makefile生成文件通常与项目其他源文件位于同一目录大型项目：可选择对项目">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-29T14:06:46.841Z">
+<meta property="og:updated_time" content="2019-10-09T16:20:59.844Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="实现hexo部署博客到GitHub">
-<meta name="twitter:description" content="打开cmd命令窗口检验node.js和npmd的安装（有版本号即安装成功)命令行：node -vnpm -v 安装hexo（我已经安装好了，此处不再赘述）命令行：npm install -g hexo 自定义一个文件夹blog（dir可查看文件路径）命令行：（此文件夹随时可删，重新下载文件便可）mkdir blog 初始化博客命令行：hexo init 启动博客命令行：hexo server （l">
+<meta name="twitter:title" content="DebugAndMake">
+<meta name="twitter:description" content="调试cc -o 可执行文件 源文件./可执行文件 选择调试源码中： ifdef name代码 endif终端：cc -o 可执行文件 -Dname 源文件 gdb设置断点break n(linenumber)run info指令：查看断点数和显示 禁用断点：disable break n make需提供一个文件说明构建–makefile生成文件通常与项目其他源文件位于同一目录大型项目：可选择对项目">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -155,40 +155,39 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-如何实现hexo部署博客到GitHub" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-DebugAndMake" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      实现hexo部署博客到GitHub
+      DebugAndMake
     </h1>
   
 
         
-        <a href="/2019/09/29/如何实现hexo部署博客到GitHub/" class="archive-article-date">
-  	<time datetime="2019-09-29T09:43:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-29</time>
+        <a href="/2019/10/08/DebugAndMake/" class="archive-article-date">
+  	<time datetime="2019-10-08T12:24:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="打开cmd命令窗口"><a href="#打开cmd命令窗口" class="headerlink" title="打开cmd命令窗口"></a>打开cmd命令窗口</h2><h2 id="检验node-js和npmd的安装（有版本号即安装成功"><a href="#检验node-js和npmd的安装（有版本号即安装成功" class="headerlink" title="检验node.js和npmd的安装（有版本号即安装成功)"></a>检验node.js和npmd的安装（有版本号即安装成功)</h2><h3 id="命令行："><a href="#命令行：" class="headerlink" title="命令行："></a>命令行：</h3><p>node -v<br>npm -v</p>
-<h2 id="安装hexo（我已经安装好了，此处不再赘述）"><a href="#安装hexo（我已经安装好了，此处不再赘述）" class="headerlink" title="安装hexo（我已经安装好了，此处不再赘述）"></a>安装hexo（我已经安装好了，此处不再赘述）</h2><h3 id="命令行：-1"><a href="#命令行：-1" class="headerlink" title="命令行："></a>命令行：</h3><p>npm install -g hexo</p>
-<h2 id="自定义一个文件夹blog（dir可查看文件路径）"><a href="#自定义一个文件夹blog（dir可查看文件路径）" class="headerlink" title="自定义一个文件夹blog（dir可查看文件路径）"></a>自定义一个文件夹blog（dir可查看文件路径）</h2><h3 id="命令行：（此文件夹随时可删，重新下载文件便可）"><a href="#命令行：（此文件夹随时可删，重新下载文件便可）" class="headerlink" title="命令行：（此文件夹随时可删，重新下载文件便可）"></a>命令行：（此文件夹随时可删，重新下载文件便可）</h3><p>mkdir blog</p>
-<h2 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h2><h3 id="命令行：-2"><a href="#命令行：-2" class="headerlink" title="命令行："></a>命令行：</h3><p>hexo init</p>
-<h2 id="启动博客"><a href="#启动博客" class="headerlink" title="启动博客"></a>启动博客</h2><h3 id="命令行：-3"><a href="#命令行：-3" class="headerlink" title="命令行："></a>命令行：</h3><p>hexo server （linux：hexo s）</p>
-<h2 id="浏览器打开网页-http-localhost-4000"><a href="#浏览器打开网页-http-localhost-4000" class="headerlink" title="浏览器打开网页 http://localhost:4000"></a>浏览器打开网页 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a></h2><h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><h3 id="命令行：-4"><a href="#命令行：-4" class="headerlink" title="命令行："></a>命令行：</h3><p>hexo new “你的博客名称”</p>
-<h2 id="编辑文章，建议直接应用打开"><a href="#编辑文章，建议直接应用打开" class="headerlink" title="编辑文章，建议直接应用打开"></a>编辑文章，建议直接应用打开</h2><h2 id="回到blog文件"><a href="#回到blog文件" class="headerlink" title="回到blog文件"></a>回到blog文件</h2><h3 id="命令行：-5"><a href="#命令行：-5" class="headerlink" title="命令行："></a>命令行：</h3><p>cd ../..</p>
-<h2 id="清理并生成"><a href="#清理并生成" class="headerlink" title="清理并生成"></a>清理并生成</h2><h3 id="命令行：-6"><a href="#命令行：-6" class="headerlink" title="命令行："></a>命令行：</h3><p>hexo clean<br>hexo generate</p>
-<h2 id="启动，返回localhost：4000，刷新，可以看到新的博客内容"><a href="#启动，返回localhost：4000，刷新，可以看到新的博客内容" class="headerlink" title="启动，返回localhost：4000，刷新，可以看到新的博客内容"></a>启动，返回localhost：4000，刷新，可以看到新的博客内容</h2><h3 id="命令行：-7"><a href="#命令行：-7" class="headerlink" title="命令行："></a>命令行：</h3><p>hexo s</p>
-<h2 id="登陆你的GitHub账号，新建一个仓库，命名务必为用户名-github-io"><a href="#登陆你的GitHub账号，新建一个仓库，命名务必为用户名-github-io" class="headerlink" title="登陆你的GitHub账号，新建一个仓库，命名务必为用户名.github.io"></a>登陆你的GitHub账号，新建一个仓库，命名务必为用户名.github.io</h2><h2 id="回到命令行，安装一个插件"><a href="#回到命令行，安装一个插件" class="headerlink" title="回到命令行，安装一个插件"></a>回到命令行，安装一个插件</h2><h3 id="命令行：-8"><a href="#命令行：-8" class="headerlink" title="命令行："></a>命令行：</h3><p>npm install –save hexo-deployer</p>
-<h2 id="在blog文件里找到-comfig-yml-在文件最低部修改"><a href="#在blog文件里找到-comfig-yml-在文件最低部修改" class="headerlink" title="在blog文件里找到_comfig.yml,在文件最低部修改"></a>在blog文件里找到_comfig.yml,在文件最低部修改</h2><h2 id="部署到远端，过程需要输入github账户密码"><a href="#部署到远端，过程需要输入github账户密码" class="headerlink" title="部署到远端，过程需要输入github账户密码"></a>部署到远端，过程需要输入github账户密码</h2><h3 id="命令行：-9"><a href="#命令行：-9" class="headerlink" title="命令行："></a>命令行：</h3><p>hexo d</p>
-<h2 id="浏览器访问之前新建的仓库名，即可看到已经部署成功"><a href="#浏览器访问之前新建的仓库名，即可看到已经部署成功" class="headerlink" title="浏览器访问之前新建的仓库名，即可看到已经部署成功"></a>浏览器访问之前新建的仓库名，即可看到已经部署成功</h2><h2 id="不成功的问题："><a href="#不成功的问题：" class="headerlink" title="不成功的问题："></a>不成功的问题：</h2><p>1.检查git的用户名和邮箱，最好改成和GitHub一样的</p>
-<p>2.检查是否在仓库中添加了SSH密钥</p>
-<p>3._config.yml中网址http和https、以及：后的空格</p>
+        <h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>cc -o 可执行文件 源文件<br>./可执行文件</p>
+<h2 id="选择调试"><a href="#选择调试" class="headerlink" title="选择调试"></a>选择调试</h2><p>源码中：</p>
+<h3 id="ifdef-name"><a href="#ifdef-name" class="headerlink" title="ifdef name"></a>ifdef name</h3><p>代码</p>
+<h3 id="endif"><a href="#endif" class="headerlink" title="endif"></a>endif</h3><p>终端：<br>cc -o 可执行文件 -Dname 源文件</p>
+<h2 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h2><h2 id="设置断点"><a href="#设置断点" class="headerlink" title="设置断点"></a>设置断点</h2><p>break n(linenumber)<br>run</p>
+<p>info指令：查看断点数和显示</p>
+<p>禁用断点：<br>disable break n</p>
+<h2 id="make"><a href="#make" class="headerlink" title="make"></a>make</h2><p>需提供一个文件说明构建–makefile<br>生成文件通常与项目其他源文件位于同一目录<br>大型项目：可选择对项目的不同部分使用单独makeflie</p>
+<h2 id="makefile"><a href="#makefile" class="headerlink" title="makefile"></a>makefile</h2><p>生成文件有一组依赖项和规则组成</p>
+<h3 id="依赖项"><a href="#依赖项" class="headerlink" title="依赖项"></a>依赖项</h3><p>一个目标（要创建的文件）（通常是一个可执行文件）和一组依赖于它的源文件</p>
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><p>描述如何从依赖文件生成目标</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>#开头</p>
+<h2 id="额外："><a href="#额外：" class="headerlink" title="额外："></a>额外：</h2><p>char string[];<br>string=&amp;string</p>
 
       
 
@@ -223,7 +222,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">搭建博客</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Linux debug make</a>
         		</li>
       		
 		</ul>
@@ -279,7 +278,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/29/如何实现hexo部署博客到GitHub/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/08/DebugAndMake/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,18 +292,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/09/29/我的第一篇博客/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/10/11/web/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          我的第一篇博客
+          web
         
       </div>
     </a>
   
   
-    <a href="/2019/09/29/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2019/10/08/Linux-Commands/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux-Commands</div>
       <i class="icon-circle-right"></i>
     </a>
   
