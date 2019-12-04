@@ -172,8 +172,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="XSS-分类"><a href="#XSS-分类" class="headerlink" title="XSS 分类"></a>XSS 分类</h2><h3 id="放射型XSS漏洞"><a href="#放射型XSS漏洞" class="headerlink" title="放射型XSS漏洞"></a>放射型XSS漏洞</h3><h4 id="形成原因："><a href="#形成原因：" class="headerlink" title="形成原因："></a>形成原因：</h4><p>1.应用程序使用动态界面向用户显示错误信息<br>2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）</p>
-
+        <h2 id="XSS-分类"><a href="#XSS-分类" class="headerlink" title="XSS 分类"></a>XSS 分类</h2><h3 id="放射型XSS漏洞"><a href="#放射型XSS漏洞" class="headerlink" title="放射型XSS漏洞"></a>放射型XSS漏洞</h3><h4 id="形成原因："><a href="#形成原因：" class="headerlink" title="形成原因："></a>形成原因：</h4><pre><code>1.应用程序使用动态界面向用户显示错误信息
+2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）
+3.需要设计一个baohanqianrshiJavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户</code></pre><p>简单漏洞:<br>    <a href="http://xxx/xx/" target="_blank" rel="noopener">http://xxx/xx/</a></p><p><script>alert(1)</script></p><br>    请求该Url时，生成<p><script>alert(1);</script></p>HTML界面<p></p>
+<pre><code>大意即是用户访问的是攻击者的url，然后攻击者的url访问用户的目标网站，然后劫持对话（？）</code></pre><h3 id="保存型跨站点脚本"><a href="#保存型跨站点脚本" class="headerlink" title="保存型跨站点脚本"></a>保存型跨站点脚本</h3><h4 id="产生原因："><a href="#产生原因：" class="headerlink" title="产生原因："></a>产生原因：</h4><pre><code>1.一个用户提交的数据被保存在应用程序中，然后未被过滤或净化就被显示给其他用户</code></pre>
       
 
       
@@ -1091,11 +1093,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">Linux commands</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linux commands</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
