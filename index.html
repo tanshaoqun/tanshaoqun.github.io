@@ -152,6 +152,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-渗透测试/XSS-跨站脚本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/03/渗透测试/XSS-跨站脚本/">XSS 跨站脚本</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/03/渗透测试/XSS-跨站脚本/" class="archive-article-date">
+  	<time datetime="2019-12-03T12:39:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="XSS-分类"><a href="#XSS-分类" class="headerlink" title="XSS 分类"></a>XSS 分类</h2><h3 id="放射型XSS漏洞"><a href="#放射型XSS漏洞" class="headerlink" title="放射型XSS漏洞"></a>放射型XSS漏洞</h3><h4 id="形成原因："><a href="#形成原因：" class="headerlink" title="形成原因："></a>形成原因：</h4><p>1.应用程序使用动态界面向用户显示错误信息<br>2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">XSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/03/渗透测试/XSS-跨站脚本/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-计算机网络/第三章 网络层" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -172,8 +246,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>####：处理端对端数据传输的最底层</p>
-<h3 id="网络层设计问题"><a href="#网络层设计问题" class="headerlink" title="网络层设计问题"></a>网络层设计问题</h3><h4 id="存储转发数据包交换"><a href="#存储转发数据包交换" class="headerlink" title="存储转发数据包交换"></a>存储转发数据包交换</h4><p>重要组件：网络服务提供商（ISP）设备、客户端设备</p>
+        <h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><h4 id="：处理端对端数据传输的最底层"><a href="#：处理端对端数据传输的最底层" class="headerlink" title="：处理端对端数据传输的最底层"></a>：处理端对端数据传输的最底层</h4><h3 id="网络层设计问题"><a href="#网络层设计问题" class="headerlink" title="网络层设计问题"></a>网络层设计问题</h3><h4 id="存储转发数据包交换"><a href="#存储转发数据包交换" class="headerlink" title="存储转发数据包交换"></a>存储转发数据包交换</h4><p>重要组件：网络服务提供商（ISP）设备、客户端设备</p>
+<h3 id="提供给传输层的服务"><a href="#提供给传输层的服务" class="headerlink" title="提供给传输层的服务"></a>提供给传输层的服务</h3><h4 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h4><pre><code>1.向上提供的服务应该独立于路由器技术
+2.应该向传输层屏蔽路由器的数量、类型和拓扑关系
+3.传输层可用的网络应该有一个统一编址方案，甚至可以跨越LAN和WAN</code></pre><h4 id="面向连接技术"><a href="#面向连接技术" class="headerlink" title="面向连接技术"></a>面向连接技术</h4><p>多协议标签交换（MPLS）<br>VLAN</p>
+<h3 id="无连接服务的实现"><a href="#无连接服务的实现" class="headerlink" title="无连接服务的实现"></a>无连接服务的实现</h3><h4 id="无连接："><a href="#无连接：" class="headerlink" title="无连接："></a>无连接：</h4><p>数据报：数据包<br>数据报网络：对应的网络</p>
+<h4 id="面向连接："><a href="#面向连接：" class="headerlink" title="面向连接："></a>面向连接：</h4><p>虚电路：从源路由器到目标路由器之间的路径<br>虚电路网络：对应的网络</p>
 
       
 
@@ -398,19 +476,19 @@
 
 
   
-    <article id="post-CSS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-前端/CSS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/21/CSS/">CSS</a>
+      <a class="article-title" href="/2019/10/21/前端/CSS/">CSS</a>
     </h1>
   
 
         
-        <a href="/2019/10/21/CSS/" class="archive-article-date">
+        <a href="/2019/10/21/前端/CSS/" class="archive-article-date">
   	<time datetime="2019-10-21T03:02:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
 </a>
         
@@ -450,7 +528,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/21/CSS/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/10/21/前端/CSS/">展开全文 >></a>
         </p>
       
 
@@ -480,19 +558,19 @@
 
 
   
-    <article id="post-JavaScript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-前端/JavaScript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/11/JavaScript/">JavaScript</a>
+      <a class="article-title" href="/2019/10/11/前端/JavaScript/">JavaScript</a>
     </h1>
   
 
         
-        <a href="/2019/10/11/JavaScript/" class="archive-article-date">
+        <a href="/2019/10/11/前端/JavaScript/" class="archive-article-date">
   	<time datetime="2019-10-11T14:16:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
 </a>
         
@@ -545,7 +623,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
@@ -555,7 +633,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/11/JavaScript/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/10/11/前端/JavaScript/">展开全文 >></a>
         </p>
       
 
@@ -585,19 +663,19 @@
 
 
   
-    <article id="post-web" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-前端/web" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/11/web/">web</a>
+      <a class="article-title" href="/2019/10/11/前端/web/">web</a>
     </h1>
   
 
         
-        <a href="/2019/10/11/web/" class="archive-article-date">
+        <a href="/2019/10/11/前端/web/" class="archive-article-date">
   	<time datetime="2019-10-11T06:08:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
 </a>
         
@@ -623,7 +701,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/11/web/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/10/11/前端/web/">展开全文 >></a>
         </p>
       
 
@@ -653,19 +731,19 @@
 
 
   
-    <article id="post-DebugAndMake" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Linux/DebugAndMake" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/08/DebugAndMake/">DebugAndMake</a>
+      <a class="article-title" href="/2019/10/08/Linux/DebugAndMake/">DebugAndMake</a>
     </h1>
   
 
         
-        <a href="/2019/10/08/DebugAndMake/" class="archive-article-date">
+        <a href="/2019/10/08/Linux/DebugAndMake/" class="archive-article-date">
   	<time datetime="2019-10-08T12:24:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
 </a>
         
@@ -709,7 +787,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/08/DebugAndMake/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/10/08/Linux/DebugAndMake/">展开全文 >></a>
         </p>
       
 
@@ -739,19 +817,19 @@
 
 
   
-    <article id="post-Linux-Commands" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Linux/Linux-Commands" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/08/Linux-Commands/">Linux-Commands</a>
+      <a class="article-title" href="/2019/10/08/Linux/Linux-Commands/">Linux-Commands</a>
     </h1>
   
 
         
-        <a href="/2019/10/08/Linux-Commands/" class="archive-article-date">
+        <a href="/2019/10/08/Linux/Linux-Commands/" class="archive-article-date">
   	<time datetime="2019-10-08T08:50:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
 </a>
         
@@ -794,7 +872,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/08/Linux-Commands/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/10/08/Linux/Linux-Commands/">展开全文 >></a>
         </p>
       
 
@@ -824,19 +902,19 @@
 
 
   
-    <article id="post-shared-library" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Linux/shared-library" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/30/shared-library/">shared library</a>
+      <a class="article-title" href="/2019/09/30/Linux/shared-library/">shared library</a>
     </h1>
   
 
         
-        <a href="/2019/09/30/shared-library/" class="archive-article-date">
+        <a href="/2019/09/30/Linux/shared-library/" class="archive-article-date">
   	<time datetime="2019-09-30T15:54:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-30</time>
 </a>
         
@@ -870,87 +948,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/30/shared-library/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-static-library" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/30/static-library/">static library</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/30/static-library/" class="archive-article-date">
-  	<time datetime="2019-09-30T11:21:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="静态库的创建"><a href="#静态库的创建" class="headerlink" title="静态库的创建"></a>静态库的创建</h2><h3 id="创建bill-c和fred-c文件"><a href="#创建bill-c和fred-c文件" class="headerlink" title="创建bill.c和fred.c文件"></a>创建bill.c和fred.c文件</h3><p>vim bill.c</p>
-<h3 id="生成-o文件"><a href="#生成-o文件" class="headerlink" title="生成.o文件"></a>生成.o文件</h3><p>gcc -c bill.c fred.c<br>s</p>
-<h3 id="创建库头文件"><a href="#创建库头文件" class="headerlink" title="创建库头文件"></a>创建库头文件</h3><p>vim lib.h<br>（在文件中定义bill.c及fred.c调用函数）</p>
-<h3 id="创建program-c"><a href="#创建program-c" class="headerlink" title="创建program.c"></a>创建program.c</h3><p>定义 #include “lib.h”<br>编辑主函数</p>
-<h3 id="生成-o文件-1"><a href="#生成-o文件-1" class="headerlink" title="生成.o文件"></a>生成.o文件</h3><p>gcc -c program.c</p>
-<h3 id="创建动态库"><a href="#创建动态库" class="headerlink" title="创建动态库"></a>创建动态库</h3><p>ar crv libfoo.a bill.o fred.o<br>ar —— 创建动态库<br>crv —— 将.o文件打包成.a文件</p>
-<h3 id="生成可执行文件"><a href="#生成可执行文件" class="headerlink" title="生成可执行文件"></a>生成可执行文件</h3><p>gcc -o program program.o libfoo.a</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">linux-C 静态库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/30/static-library/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/30/Linux/shared-library/">展开全文 >></a>
         </p>
       
 
@@ -1077,27 +1075,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Linux debug make</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linux commands</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux-C 共享库</a>
+                <a href="javascript:void(0)" class="js-tag color5">搭建博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1105,7 +1083,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">搭建博客</a>
+                <a href="javascript:void(0)" class="js-tag color2">Linux debug make</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">linux-C 共享库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Linux commands</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">XSS</a>
               </li>
              
               <li class="article-tag-list-item">

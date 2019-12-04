@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: CSS | Hexo</title>
+  <title>JavaScript | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/CSS/index.html">
+  <meta name="description" content="简洁原：var cube,square; square=function(x){    return xx;};cube=function(x){    return square(x)x;};改：square=(x)-&amp;gt;xxcube=(x)-&amp;gt;square(x)x 在HTML文档中嵌入JavaScript脚本     ...JavaScript code...  alert(“…”)">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript">
+<meta property="og:url" content="http://yoursite.com/2019/10/11/前端/JavaScript/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简洁原：var cube,square; square=function(x){    return xx;};cube=function(x){    return square(x)x;};改：square=(x)-&amp;gt;xxcube=(x)-&amp;gt;square(x)x 在HTML文档中嵌入JavaScript脚本     ...JavaScript code...  alert(“…”)">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-03T12:47:04.639Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="JavaScript">
+<meta name="twitter:description" content="简洁原：var cube,square; square=function(x){    return xx;};cube=function(x){    return square(x)x;};改：square=(x)-&amp;gt;xxcube=(x)-&amp;gt;square(x)x 在HTML文档中嵌入JavaScript脚本     ...JavaScript code...  alert(“…”)">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,60 +155,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-前端/JavaScript" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/21/前端/CSS/" class="archive-article-date">
-  	<time datetime="2019-10-21T03:02:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/21/前端/CSS/">CSS</a>
+    <h1 class="article-title" itemprop="name">
+      JavaScript
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/10/11/前端/JavaScript/" class="archive-article-date">
+  	<time datetime="2019-10-11T14:16:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简洁"><a href="#简洁" class="headerlink" title="简洁"></a>简洁</h2><p>原：<br>var cube,square;</p>
+<p>square=function(x){<br>    return x<em>x;<br>};<br>cube=function(x){<br>    return square(x)</em>x;<br>};<br>改：<br>square=(x)-&gt;x<em>x<br>cube=(x)-&gt;square(x)</em>x</p>
+<h2 id="在HTML文档中嵌入JavaScript脚本"><a href="#在HTML文档中嵌入JavaScript脚本" class="headerlink" title="在HTML文档中嵌入JavaScript脚本"></a>在HTML文档中嵌入JavaScript脚本</h2><script type="text/javascript">
+    ...JavaScript code...
+</script>
+<p>alert(“…”); //弹出消息框提示</p>
+<h2 id="JavaScript插入head、body都可以"><a href="#JavaScript插入head、body都可以" class="headerlink" title="JavaScript插入head、body都可以"></a>JavaScript插入head、body都可以</h2><h2 id="JavaScript-variable："><a href="#JavaScript-variable：" class="headerlink" title="JavaScript variable："></a>JavaScript variable：</h2><h3 id="number："><a href="#number：" class="headerlink" title="number："></a>number：</h3><p>特殊类型：1/0==Infinity(无穷大)<br>Math.sprt(-1)==NaN<br>JavaScript中的浮点数运算并不是百分百准确<br>0.1+0.2 可改成 ((0.1<em>10+0.2</em>10)/10)</p>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>字符串必须用引号圈起来<br>三种引号：</p>
+<ol>
+<li>“”</li>
+<li>‘’</li>
+<li>’’<br>反引号，反引号是扩展功能的引号，允许其他字符串以${…}的形式嵌入<br>var foo=’This a test’;<br>foo=foo+’XXX’<br>可用的函数：indexOf(),charAt(),match(),search(),replace(),toUpperCase(),toLowerCase(),slice(),substr()</li>
+</ol>
+<h3 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h3><p>truthy：真值(Not falsy: all objects,non-empty strings,non-zero numbers,function,etc.)<br>falsy：虚值(例：false,””,0,null,undefined,NaN)</p>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>null==undefine<br>typeof(null)!=typeof(undefine)<br>//(typeof可以作为一个操作(typeof x)使用，也可以作为一个函数使用(typeof(x))两者运行结果一样)<br>//Number(object)：将对象的值转化为数字；当对象为Date对象，返回1970年1月1日至今的毫秒数；当对象的值无法转化为狮子，返回NaN<br>Number(true)  //return 1<br>Number(false)  //return 0<br>Number(“   123  “)  //return 123<br>Number(“aa123”)  //return NaN</p>
+<h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><p>console.log():能够看到结构化的东西(console:控制台)<br>会不断打印你页面的操作<br>将’”use strict”‘写在script/function开头</p>
+<h3 id="函数声明-Declaration"><a href="#函数声明-Declaration" class="headerlink" title="函数声明(Declaration)"></a>函数声明(Declaration)</h3><p>function sayHi(){<br>    alert(“Hello”);<br>}</p>
+<h3 id="函数表达式-Expreesion"><a href="#函数表达式-Expreesion" class="headerlink" title="函数表达式(Expreesion)"></a>函数表达式(Expreesion)</h3><p>var sayHi(){<br>    alert(“Hello”);<br>} /<br>var sayHi=function (){<br>    alert(“Hello”);<br>}</p>
+<h2 id="hoisting（提升）"><a href="#hoisting（提升）" class="headerlink" title="hoisting（提升）"></a>hoisting（提升）</h2><p>在JavaScript中，可以在使用变量之后对其进行声明<br>提升:即将所有声明提升到当前作用域顶部的默认行为<br>//JavaScript只提升声明，不支持初始化</p>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>有block scope(区块范围)<br>例<br>var x=10; //10<br>{<br>    var x=2; //2<br>}<br>//2</p>
+<p>var x=10; //10<br>{<br>    let x=2; //2<br>}<br>//10</p>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>作用类似let，只是不可以重新分配<br>var x=10； //10<br>{<br>    const x=2； //2<br>}<br>//10</p>
+<p>const cars=[“Saab”,”Volvo”,”Bmw”];<br>cars[0]=”Toyota”; //change an element<br>cars.push(“Audi”); //add an element</p>
+<h2 id="面向对象编程：继承"><a href="#面向对象编程：继承" class="headerlink" title="面向对象编程：继承"></a>面向对象编程：继承</h2><p>JavaScript：每一个对象实例(prototype object)都有一个原型对象(object)</p>
+<h2 id="prototypes-inheritance-继承"><a href="#prototypes-inheritance-继承" class="headerlink" title="prototypes (inheritance 继承)"></a>prototypes (inheritance 继承)</h2><p>只修改你的prototype，永远不要修改standard JavaScript objects</p>
+<h2 id="Functional-Programing"><a href="#Functional-Programing" class="headerlink" title="Functional Programing"></a>Functional Programing</h2><p>基本上可以但不能完全避免functional style<br>使用callback(回调函数)完成异步事件</p>
+<h3 id="数组式映射方法"><a href="#数组式映射方法" class="headerlink" title="数组式映射方法"></a>数组式映射方法</h3><p>创建一个新数组，并为每一个数组元素调用一个函数<br>array.map(function(currentValue,index,arr),thisValue)</p>
+<h3 id="数组过滤器方法"><a href="#数组过滤器方法" class="headerlink" title="数组过滤器方法"></a>数组过滤器方法</h3><p>创建一个数组，填充通过测试(作为函数提供)的所有数组元素<br>不为没有值的数组元素执行函数<br>不更改原始数组<br>array.filter(function(currentValue,index,arr),thisValue)</p>
+<h3 id="数组reduce方法"><a href="#数组reduce方法" class="headerlink" title="数组reduce方法"></a>数组reduce方法</h3><p>将数组缩减为单个值<br>array.reduce(function(total,currentValue,currentindex,arr),initialValue)</p>
+<h3 id="Arrow-function-箭头函数"><a href="#Arrow-function-箭头函数" class="headerlink" title="Arrow function 箭头函数"></a>Arrow function 箭头函数</h3><p>箭头函数不重定义函数<br>例：<br>newArr=anArr.map(function(val,ind)){<br>    return val<em>ind;<br>}<br>newArr=anArr.map((val,ind)=&gt;val</em>ind)</p>
+<p>例：<br>/<em>anArr.filter(value=&gt;value&lt;45).map((value,ind)=&gt;value</em>dind).reduce((total,value)=&gt;total+vaue);</p>
+<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>确保某些代码直到另一些代码执行完毕再执行</p>
+<h2 id="first-class-function"><a href="#first-class-function" class="headerlink" title="first-class function"></a>first-class function</h2>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/11/前端/JavaScript/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/10/21/前端/CSS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CSS
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2019/10/11/前端/web/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">web</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -226,9 +378,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

@@ -152,19 +152,99 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Web-javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Linux/static-library" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/30/Web-javascript/">Web javascript</a>
+      <a class="article-title" href="/2019/09/30/Linux/static-library/">static library</a>
     </h1>
   
 
         
-        <a href="/2019/09/30/Web-javascript/" class="archive-article-date">
+        <a href="/2019/09/30/Linux/static-library/" class="archive-article-date">
+  	<time datetime="2019-09-30T11:21:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="静态库的创建"><a href="#静态库的创建" class="headerlink" title="静态库的创建"></a>静态库的创建</h2><h3 id="创建bill-c和fred-c文件"><a href="#创建bill-c和fred-c文件" class="headerlink" title="创建bill.c和fred.c文件"></a>创建bill.c和fred.c文件</h3><p>vim bill.c</p>
+<h3 id="生成-o文件"><a href="#生成-o文件" class="headerlink" title="生成.o文件"></a>生成.o文件</h3><p>gcc -c bill.c fred.c</p>
+<h3 id="创建库头文件"><a href="#创建库头文件" class="headerlink" title="创建库头文件"></a>创建库头文件</h3><p>vim lib.h<br>（在文件中定义bill.c及fred.c调用函数）</p>
+<h3 id="创建program-c"><a href="#创建program-c" class="headerlink" title="创建program.c"></a>创建program.c</h3><p>定义 #include “lib.h”<br>编辑主函数</p>
+<h3 id="生成-o文件-1"><a href="#生成-o文件-1" class="headerlink" title="生成.o文件"></a>生成.o文件</h3><p>gcc -c program.c</p>
+<h3 id="创建动态库"><a href="#创建动态库" class="headerlink" title="创建动态库"></a>创建动态库</h3><p>ar crv libfoo.a bill.o fred.o<br>ar —— 创建动态库<br>crv —— 将.o文件打包成.a文件</p>
+<h3 id="生成可执行文件"><a href="#生成可执行文件" class="headerlink" title="生成可执行文件"></a>生成可执行文件</h3><p>gcc -o program program.o libfoo.a</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">linux-C 静态库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/30/Linux/static-library/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-前端/Web-javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/30/前端/Web-javascript/">Web javascript</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/30/前端/Web-javascript/" class="archive-article-date">
   	<time datetime="2019-09-30T06:04:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-30</time>
 </a>
         
@@ -197,7 +277,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		
 		</ul>
@@ -207,7 +287,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/30/Web-javascript/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/30/前端/Web-javascript/">展开全文 >></a>
         </p>
       
 
@@ -237,7 +317,7 @@
 
 
   
-    <article id="post-python1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Python/python1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
@@ -330,7 +410,69 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/29/python1/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/29/Python/python1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/29/我的第一篇博客/">我的第一篇博客</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/29/我的第一篇博客/" class="archive-article-date">
+  	<time datetime="2019-09-29T09:43:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一次写博客，大家请多指教"><a href="#第一次写博客，大家请多指教" class="headerlink" title="第一次写博客，大家请多指教"></a>第一次写博客，大家请多指教</h2><h2 id="我从现在开始，就是一个有自己博客的人啦！"><a href="#我从现在开始，就是一个有自己博客的人啦！" class="headerlink" title="我从现在开始，就是一个有自己博客的人啦！"></a>我从现在开始，就是一个有自己博客的人啦！</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/29/我的第一篇博客/">展开全文 >></a>
         </p>
       
 
@@ -394,6 +536,7 @@
 <h2 id="浏览器访问之前新建的仓库名，即可看到已经部署成功"><a href="#浏览器访问之前新建的仓库名，即可看到已经部署成功" class="headerlink" title="浏览器访问之前新建的仓库名，即可看到已经部署成功"></a>浏览器访问之前新建的仓库名，即可看到已经部署成功</h2><h2 id="不成功的问题："><a href="#不成功的问题：" class="headerlink" title="不成功的问题："></a>不成功的问题：</h2><p>1.检查git的用户名和邮箱，最好改成和GitHub一样的</p>
 <p>2.检查是否在仓库中添加了SSH密钥</p>
 <p>3._config.yml中网址http和https、以及：后的空格</p>
+<h2 id="出现问题：Please-tell-me-who-you-are…-fatal-unable-to-auto-detect-email-address"><a href="#出现问题：Please-tell-me-who-you-are…-fatal-unable-to-auto-detect-email-address" class="headerlink" title="出现问题：Please tell me who you are….fatal: unable to auto-detect email address"></a>出现问题：Please tell me who you are….fatal: unable to auto-detect email address</h2><p>解决方法:<br>git config –global user.name your-name<br>git config –global user.email your-email</p>
 
       
 
@@ -418,68 +561,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/09/29/如何实现hexo部署博客到GitHub/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/29/我的第一篇博客/">我的第一篇博客</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/29/我的第一篇博客/" class="archive-article-date">
-  	<time datetime="2019-09-29T09:43:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一次写博客，大家请多指教"><a href="#第一次写博客，大家请多指教" class="headerlink" title="第一次写博客，大家请多指教"></a>第一次写博客，大家请多指教</h2><h2 id="我从现在开始，就是一个有自己博客的人啦！"><a href="#我从现在开始，就是一个有自己博客的人啦！" class="headerlink" title="我从现在开始，就是一个有自己博客的人啦！"></a>我从现在开始，就是一个有自己博客的人啦！</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/29/我的第一篇博客/">展开全文 >></a>
         </p>
       
 
@@ -681,27 +762,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Linux debug make</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linux commands</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux-C 共享库</a>
+                <a href="javascript:void(0)" class="js-tag color5">搭建博客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -709,7 +770,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">搭建博客</a>
+                <a href="javascript:void(0)" class="js-tag color2">Linux debug make</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">linux-C 共享库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Linux commands</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">XSS</a>
               </li>
              
               <li class="article-tag-list-item">
