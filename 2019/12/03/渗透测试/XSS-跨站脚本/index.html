@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="XSS 分类放射型XSS漏洞形成原因：1.应用程序使用动态界面向用户显示错误信息 2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中） 3.需要设计一个baohanqianrshiJavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户简单漏洞:    http://xxx/xx/&amp;lt;//p&amp;gt;&amp;lt;//script&amp;gt;//a">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-05T01:08:02.737Z">
+<meta property="og:updated_time" content="2019-12-07T02:01:52.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS 跨站脚本">
 <meta name="twitter:description" content="XSS 分类放射型XSS漏洞形成原因：1.应用程序使用动态界面向用户显示错误信息 2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中） 3.需要设计一个baohanqianrshiJavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户简单漏洞:    http://xxx/xx/&amp;lt;//p&amp;gt;&amp;lt;//script&amp;gt;//a">
@@ -177,8 +177,33 @@
       
         <h2 id="XSS-分类"><a href="#XSS-分类" class="headerlink" title="XSS 分类"></a>XSS 分类</h2><h3 id="放射型XSS漏洞"><a href="#放射型XSS漏洞" class="headerlink" title="放射型XSS漏洞"></a>放射型XSS漏洞</h3><h4 id="形成原因："><a href="#形成原因：" class="headerlink" title="形成原因："></a>形成原因：</h4><pre><code>1.应用程序使用动态界面向用户显示错误信息
 2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）
-3.需要设计一个baohanqianrshiJavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户</code></pre><p>简单漏洞:<br>    <a href="http://xxx/xx/" target="_blank" rel="noopener">http://xxx/xx/</a>&lt;//p&gt;&lt;//script&gt;//alert(1)&lt;///script&gt;&lt;///p&gt;<br>    请求该Url时，生成&lt;//p&gt;&lt;//script&gt;//alert(1);&lt;///script&gt;&lt;///p&gt;HTML界面<br>    大意即是用户访问的是攻击者的url，然后攻击者的url访问用户的目标网站，然后劫持对话（？）</p>
-<h3 id="保存型跨站点脚本"><a href="#保存型跨站点脚本" class="headerlink" title="保存型跨站点脚本"></a>保存型跨站点脚本</h3><h4 id="产生原因："><a href="#产生原因：" class="headerlink" title="产生原因："></a>产生原因：</h4><pre><code>一个用户提交的数据被保存在应用程序中，然后未被过滤或净化就被显示给其他用户</code></pre><h4 id="常见场景："><a href="#常见场景：" class="headerlink" title="常见场景："></a>常见场景：</h4><pre><code>在支持终端用户交互的应用程序中，或者在于有管理员权限的员工访问同一个应用程序中的用户记录和数据的应用程序中</code></pre>
+3.需要设计一个baohanqianrshiJavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户</code></pre><p>简单漏洞:<br>    <a href="http://xxx/xx/" target="_blank" rel="noopener">http://xxx/xx/</a>&lt;//p&gt;&lt;//script&gt;//alert(1)&lt;///script&gt;&lt;///p&gt;<br>    请求该Url时，生成&lt;//p&gt;&lt;//script&gt;//alert(1);&lt;///script&gt;&lt;///p&gt;HTML界面<br>    大意即是用户访问的是攻击者的url，然后攻击者的url访问用户的目标网站，然后劫持对话（要求攻击者诱使受害者访问他设计的url）</p>
+<h3 id="保存型跨站点脚本（二阶跨站点脚本）"><a href="#保存型跨站点脚本（二阶跨站点脚本）" class="headerlink" title="保存型跨站点脚本（二阶跨站点脚本）"></a>保存型跨站点脚本（二阶跨站点脚本）</h3><h4 id="产生原因："><a href="#产生原因：" class="headerlink" title="产生原因："></a>产生原因：</h4><pre><code>一个用户提交的数据被保存在应用程序中，然后未被过滤或净化就被显示给其他用户</code></pre><h4 id="常见场景："><a href="#常见场景：" class="headerlink" title="常见场景："></a>常见场景：</h4><pre><code>在支持终端用户交互的应用程序中，或者在于有管理员权限的员工访问同一个应用程序中的用户记录和数据的应用程序中
+（例如攻击者向卖家提出的问题中包含了一个嵌入式JavaScript问题，而且应用程序并不过滤或净化这个JavaScript，则在其他用户查看问题时，浏览器会执行相应的攻击脚本）</code></pre><h4 id="两个请求："><a href="#两个请求：" class="headerlink" title="两个请求："></a>两个请求：</h4><pre><code>1.攻击者在第一个请求在传输一些专门设计的数据（包含恶意代码），应用程序接受并保存这些数据
+2.受害者查看某个包含攻击者代码的页面，恶意代码开始执行</code></pre><h3 id="基于DOM的XSS漏洞"><a href="#基于DOM的XSS漏洞" class="headerlink" title="基于DOM的XSS漏洞"></a>基于DOM的XSS漏洞</h3><p>不同于前者的特殊行为方式造成的漏洞（应用程序提取用户控制的数据并以危险方式将这些数据返回给用户）</p>
+<h4 id="产生方式："><a href="#产生方式：" class="headerlink" title="产生方式："></a>产生方式：</h4><pre><code>1.用户请求一个经过专门设计的Url（攻击者设计的）
+2.服务器的响应中并不以任何形式宝行攻击者的脚本
+3.当用户的浏览器开始处理这个响应时，上述脚本得以处理</code></pre><h4 id="攻击步骤："><a href="#攻击步骤：" class="headerlink" title="攻击步骤："></a>攻击步骤：</h4><pre><code>1.用户登录
+2.攻击者将自己的url反馈给用户
+3.用户向服务器请求攻击者的url
+4.服务器以含有硬编码的JavaScript页面回应
+5.攻击者的url由用户的JavaScript处理，引发有效荷载
+6.用户的浏览器向攻击者发送会话令牌
+7.攻击者截持会话</code></pre><h2 id="进行的XSS攻击"><a href="#进行的XSS攻击" class="headerlink" title="进行的XSS攻击"></a>进行的XSS攻击</h2><h3 id="XSS攻击有效载荷"><a href="#XSS攻击有效载荷" class="headerlink" title="XSS攻击有效载荷"></a>XSS攻击有效载荷</h3><h4 id="虚拟置换："><a href="#虚拟置换：" class="headerlink" title="虚拟置换："></a>虚拟置换：</h4><p>在一个Web应用程序页面注入恶意数据，从而向应用程序用户传送误导性信息。包含简单的向站点注入HTML标记，或者使用脚本在站点中注入精心设计的内容和导航。</p>
+<h4 id="注入木马功能"><a href="#注入木马功能" class="headerlink" title="注入木马功能"></a>注入木马功能</h4><p>在易受攻击的应用程序中注入实际运行的功能，旨在欺骗终端用户执行某种有害操作</p>
+<h4 id="诱导用户执行操作"><a href="#诱导用户执行操作" class="headerlink" title="诱导用户执行操作"></a>诱导用户执行操作</h4><p>利用攻击有效载荷脚本执行操作</p>
+<h4 id="利用信任关系"><a href="#利用信任关系" class="headerlink" title="利用信任关系"></a>利用信任关系</h4><p>浏览器信任由发布cookie的Web站点提交的JavaScript</p>
+<h4 id="扩大客户端攻击范围"><a href="#扩大客户端攻击范围" class="headerlink" title="扩大客户端攻击范围"></a>扩大客户端攻击范围</h4><h3 id="XSS攻击的传送机制"><a href="#XSS攻击的传送机制" class="headerlink" title="XSS攻击的传送机制"></a>XSS攻击的传送机制</h3><h4 id="传送反射性于基于DOM的XSS攻击"><a href="#传送反射性于基于DOM的XSS攻击" class="headerlink" title="传送反射性于基于DOM的XSS攻击"></a>传送反射性于基于DOM的XSS攻击</h4><h4 id="传送保存型XSS攻击"><a href="#传送保存型XSS攻击" class="headerlink" title="传送保存型XSS攻击"></a>传送保存型XSS攻击</h4><p>两种传送机制：带内和带外传送机制</p>
+<h5 id="带内："><a href="#带内：" class="headerlink" title="带内："></a>带内：</h5><pre><code>适用于大多数情况，漏洞数据通过主Web界面提交给应用程序</code></pre><h5 id="带外："><a href="#带外：" class="headerlink" title="带外："></a>带外：</h5><pre><code>通过其他渠道向应用程序提交漏洞数据的情况。应用程序通过这种渠道提交数据，并最终在主Web界面生成的HTML页面显示它</code></pre><h3 id="链接XSS与其他攻击"><a href="#链接XSS与其他攻击" class="headerlink" title="链接XSS与其他攻击"></a>链接XSS与其他攻击</h3><h2 id="查找并利用XSS漏洞"><a href="#查找并利用XSS漏洞" class="headerlink" title="查找并利用XSS漏洞"></a>查找并利用XSS漏洞</h2><h4 id="确定XSS漏洞基本方法"><a href="#确定XSS漏洞基本方法" class="headerlink" title="确定XSS漏洞基本方法"></a>确定XSS漏洞基本方法</h4><p>提交”&gt;&lt;//script&gt;//alert(document.cookie)&lt;///script&gt;到页面的每一个参数，同时监控它的响应，看是否出现相同的字符串</p>
+<h3 id="查找并利用反射型XSS漏洞"><a href="#查找并利用反射型XSS漏洞" class="headerlink" title="查找并利用反射型XSS漏洞"></a>查找并利用反射型XSS漏洞</h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><pre><code>1.在每一个进入点提交一个良性字母字符串
+2.确认此字符串“反射”在应用程序中的所有位置
+3.对于每个反射，确定显示反射型数据时的语法上下文
+4.提交针对反射的语法上下文而修改的数据，尝试在响应中引入任意脚本
+5.如果反射型数据被阻止或净化，导致脚本无法执行，则尝试了解并避开应用程序的防御性过滤</code></pre><h4 id="确认用户输入的反射"><a href="#确认用户输入的反射" class="headerlink" title="确认用户输入的反射"></a>确认用户输入的反射</h4><h4 id="测试引入脚本的反射"><a href="#测试引入脚本的反射" class="headerlink" title="测试引入脚本的反射"></a>测试引入脚本的反射</h4><pre><code>1.选择任意字符串，提交（不会受到XSS过滤影响的）
+2.监控应用程序的响应，看是否出现同一字符串
+3.测试所有POST和GET请求
+4.一旦在POST请求中发现XSS，使用Burp的“change request method”确定是否可以通过GET实施相同的攻击
+5.检测HTTP请求消息头内容被应用程序处理的每一种情况</code></pre>
       
 
       
@@ -418,11 +443,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
