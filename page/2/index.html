@@ -152,6 +152,167 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux/Linux-Commands" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/08/Linux/Linux-Commands/">Linux-Commands</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/08/Linux/Linux-Commands/" class="archive-article-date">
+  	<time datetime="2019-10-08T08:50:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="shutdown-h-now"><a href="#shutdown-h-now" class="headerlink" title="shutdown -h now"></a>shutdown -h now</h2><p>立刻关闭系统，结束所有进程，且不重新启动</p>
+<h2 id="cd-filename"><a href="#cd-filename" class="headerlink" title="cd /filename"></a>cd /filename</h2><p>进入filename目录</p>
+<h2 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h2><p>显示文件路径</p>
+<h2 id="ls-l"><a href="#ls-l" class="headerlink" title="ls -l"></a>ls -l</h2><p>显示文件和目录的细节（包括文件的权限，修改时间，端口号（？））</p>
+<h2 id="ln-s-file-link"><a href="#ln-s-file-link" class="headerlink" title="ln -s file link"></a>ln -s file link</h2><p>创建指向文件或目录的符号链接<br>（对符号链接文件的操作表现为直接对目标文件进行操作）<br>符号链接：保存了文件的绝对路径，是另一种文件，在硬件上有独立的区块，访问时替换自身路径<br>硬链接：与普通文件没有区别，指向同一个文件在硬盘的区块</p>
+<h2 id="ln-file-link"><a href="#ln-file-link" class="headerlink" title="ln file link"></a>ln file link</h2><p>创建物理链接</p>
+<h2 id="查找文件名或字符"><a href="#查找文件名或字符" class="headerlink" title="查找文件名或字符"></a>查找文件名或字符</h2><p>find / -name fname<br>查找文件名<br>find / -name “<em>fname</em>“<br>查找含字符串fname的文件<br>locate 文件名<br>查找文件路径<br>updatadb<br>在连接到Linux根目录的所有文件系统上创建或更新文件数据库</p>
+<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><p>rm name<br>删除名为name的文件<br>rm -rf name<br>删除整个目录</p>
+<h2 id="复制、移动文件"><a href="#复制、移动文件" class="headerlink" title="复制、移动文件"></a>复制、移动文件</h2><p>cp filename /root/dirname<br>将filename文件复制到dirname目录下<br>mv filenmae /root/dirname<br>将filename文件移动到dirname目录下</p>
+<h2 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h2><p>cat filename<br>显示名为filename的文件<br>man -k keyword<br>显示包含关键字的手册页<br>head filename<br>显示前10行<br>tail filename<br>显示最后10行</p>
+<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><p>ls -l<br>查看文件权限<br>d|Owner|Group|Others<br>r-read(4) w-write(2) x-execute(执行：1)<br>修改文件权限：<br>chmod nmo （n:owner的权限值 m:group的权限值 o:others的权限值）</p>
+<h2 id="额外："><a href="#额外：" class="headerlink" title="额外："></a>额外：</h2><p>r filename<br>在当前行和下一行之间添加文件filename的内容<br>yy 复制<br>p 粘贴</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/08/Linux/Linux-Commands/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Linux/shared-library" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/30/Linux/shared-library/">shared library</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/30/Linux/shared-library/" class="archive-article-date">
+  	<time datetime="2019-09-30T15:54:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="构建共享库"><a href="#构建共享库" class="headerlink" title="构建共享库"></a>构建共享库</h2><h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><p>存储在和静态库一样的位置上，但是共享库有不一样的后缀名</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>共享库可以一次供多个应用程序使用</p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>共享库可以独立于它的应用程序进行更新 </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/30/Linux/shared-library/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Linux/static-library" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -770,11 +931,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color1">Web攻击</a>
               </li>
              
               <li class="article-tag-list-item">
