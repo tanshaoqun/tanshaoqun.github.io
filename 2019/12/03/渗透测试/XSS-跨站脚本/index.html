@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>XSS 跨站脚本 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="XSS 分类放射型XSS漏洞形成原因：1.应用程序使用动态界面向用户显示错误信息2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）3.需要设计一个包含嵌入式JavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户简单漏洞:    http://xxx/xx/&amp;lt;//p&amp;gt;&amp;lt;//script&amp;gt;//alert(1)&amp;lt;">
+  <meta name="description" content="XSS 分类XSS(Cross Site Scripting)：攻击者在页面注入恶意的脚本代码，当受害者访问该页面时，恶意代码会在其浏览器上执行放射型XSS漏洞形成原因：1.应用程序使用动态界面向用户显示错误信息2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）3.需要设计一个包含嵌入式JavaScript代码的请求，随后这些代码又被反射到任何提出请求的">
 <meta name="keywords" content="XSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XSS 跨站脚本">
 <meta property="og:url" content="http://yoursite.com/2019/12/03/渗透测试/XSS-跨站脚本/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="XSS 分类放射型XSS漏洞形成原因：1.应用程序使用动态界面向用户显示错误信息2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）3.需要设计一个包含嵌入式JavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户简单漏洞:    http://xxx/xx/&amp;lt;//p&amp;gt;&amp;lt;//script&amp;gt;//alert(1)&amp;lt;">
+<meta property="og:description" content="XSS 分类XSS(Cross Site Scripting)：攻击者在页面注入恶意的脚本代码，当受害者访问该页面时，恶意代码会在其浏览器上执行放射型XSS漏洞形成原因：1.应用程序使用动态界面向用户显示错误信息2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）3.需要设计一个包含嵌入式JavaScript代码的请求，随后这些代码又被反射到任何提出请求的">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-07T07:35:16.753Z">
+<meta property="og:updated_time" content="2019-12-08T10:21:11.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS 跨站脚本">
-<meta name="twitter:description" content="XSS 分类放射型XSS漏洞形成原因：1.应用程序使用动态界面向用户显示错误信息2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）3.需要设计一个包含嵌入式JavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户简单漏洞:    http://xxx/xx/&amp;lt;//p&amp;gt;&amp;lt;//script&amp;gt;//alert(1)&amp;lt;">
+<meta name="twitter:description" content="XSS 分类XSS(Cross Site Scripting)：攻击者在页面注入恶意的脚本代码，当受害者访问该页面时，恶意代码会在其浏览器上执行放射型XSS漏洞形成原因：1.应用程序使用动态界面向用户显示错误信息2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）3.需要设计一个包含嵌入式JavaScript代码的请求，随后这些代码又被反射到任何提出请求的">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -175,7 +175,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="XSS-分类"><a href="#XSS-分类" class="headerlink" title="XSS 分类"></a>XSS 分类</h2><h3 id="放射型XSS漏洞"><a href="#放射型XSS漏洞" class="headerlink" title="放射型XSS漏洞"></a>放射型XSS漏洞</h3><h4 id="形成原因："><a href="#形成原因：" class="headerlink" title="形成原因："></a>形成原因：</h4><p>1.应用程序使用动态界面向用户显示错误信息<br>2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）<br>3.需要设计一个包含嵌入式JavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户<br>简单漏洞:<br>    <a href="http://xxx/xx/" target="_blank" rel="noopener">http://xxx/xx/</a>&lt;//p&gt;&lt;//script&gt;//alert(1)&lt;///script&gt;&lt;///p&gt;<br>    请求该Url时，生成&lt;//p&gt;&lt;//script&gt;//alert(1);&lt;///script&gt;&lt;///p&gt;HTML界面<br>    大意即是用户访问的是攻击者的url，然后攻击者的url访问用户的目标网站，然后劫持对话（要求攻击者诱使受害者访问他设计的url）</p>
+        <h2 id="XSS-分类"><a href="#XSS-分类" class="headerlink" title="XSS 分类"></a>XSS 分类</h2><pre><code>XSS(Cross Site Scripting)：攻击者在页面注入恶意的脚本代码，当受害者访问该页面时，恶意代码会在其浏览器上执行</code></pre><h3 id="放射型XSS漏洞"><a href="#放射型XSS漏洞" class="headerlink" title="放射型XSS漏洞"></a>放射型XSS漏洞</h3><h4 id="形成原因："><a href="#形成原因：" class="headerlink" title="形成原因："></a>形成原因：</h4><p>1.应用程序使用动态界面向用户显示错误信息<br>2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）<br>3.需要设计一个包含嵌入式JavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户<br>简单漏洞:<br>    <a href="http://xxx/xx/" target="_blank" rel="noopener">http://xxx/xx/</a>&lt;//p&gt;&lt;//script&gt;//alert(1)&lt;///script&gt;&lt;///p&gt;<br>    请求该Url时，生成&lt;//p&gt;&lt;//script&gt;//alert(1);&lt;///script&gt;&lt;///p&gt;HTML界面<br>    大意即是用户访问的是攻击者的url，然后攻击者的url访问用户的目标网站，然后劫持对话（要求攻击者诱使受害者访问他设计的url）</p>
 <h3 id="保存型跨站点脚本（二阶跨站点脚本）"><a href="#保存型跨站点脚本（二阶跨站点脚本）" class="headerlink" title="保存型跨站点脚本（二阶跨站点脚本）"></a>保存型跨站点脚本（二阶跨站点脚本）</h3><h4 id="产生原因："><a href="#产生原因：" class="headerlink" title="产生原因："></a>产生原因：</h4><p>一个用户提交的数据被保存在应用程序中，然后未被过滤或净化就被显示给其他用户</p>
 <h4 id="常见场景："><a href="#常见场景：" class="headerlink" title="常见场景："></a>常见场景：</h4><p>在支持终端用户交互的应用程序中，或者在于有管理员权限的员工访问同一个应用程序中的用户记录和数据的应用程序中<br>（例如攻击者向卖家提出的问题中包含了一个嵌入式JavaScript问题，而且应用程序并不过滤或净化这个JavaScript，则在其他用户查看问题时，浏览器会执行相应的攻击脚本）</p>
 <h4 id="两个请求："><a href="#两个请求：" class="headerlink" title="两个请求："></a>两个请求：</h4><pre><code>1.攻击者在第一个请求在传输一些专门设计的数据（包含恶意代码），应用程序接受并保存这些数据    
@@ -468,11 +468,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">

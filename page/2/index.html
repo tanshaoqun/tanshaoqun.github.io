@@ -152,6 +152,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux/DebugAndMake" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/08/Linux/DebugAndMake/">DebugAndMake</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/08/Linux/DebugAndMake/" class="archive-article-date">
+  	<time datetime="2019-10-08T12:24:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>cc -o 可执行文件 源文件<br>./可执行文件</p>
+<h2 id="选择调试"><a href="#选择调试" class="headerlink" title="选择调试"></a>选择调试</h2><p>源码中：</p>
+<h3 id="ifdef-name"><a href="#ifdef-name" class="headerlink" title="ifdef name"></a>ifdef name</h3><p>代码</p>
+<h3 id="endif"><a href="#endif" class="headerlink" title="endif"></a>endif</h3><p>终端：<br>cc -o 可执行文件 -Dname 源文件</p>
+<h2 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h2><h2 id="设置断点"><a href="#设置断点" class="headerlink" title="设置断点"></a>设置断点</h2><p>break n(linenumber)<br>run</p>
+<p>info指令：查看断点数和显示</p>
+<p>禁用断点：<br>disable break n</p>
+<h2 id="make"><a href="#make" class="headerlink" title="make"></a>make</h2><p>需提供一个文件说明构建–makefile<br>生成文件通常与项目其他源文件位于同一目录<br>大型项目：可选择对项目的不同部分使用单独makeflie</p>
+<h2 id="makefile"><a href="#makefile" class="headerlink" title="makefile"></a>makefile</h2><p>生成文件有一组依赖项和规则组成</p>
+<h3 id="依赖项"><a href="#依赖项" class="headerlink" title="依赖项"></a>依赖项</h3><p>一个目标（要创建的文件）（通常是一个可执行文件）和一组依赖于它的源文件</p>
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><p>描述如何从依赖文件生成目标</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>#开头</p>
+<h2 id="额外："><a href="#额外：" class="headerlink" title="额外："></a>额外：</h2><p>char string[];<br>string=&amp;string</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/08/Linux/DebugAndMake/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Linux/Linux-Commands" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -931,11 +1017,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
