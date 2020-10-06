@@ -152,202 +152,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-渗透测试/XSS-跨站脚本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/03/渗透测试/XSS-跨站脚本/">XSS 跨站脚本</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/03/渗透测试/XSS-跨站脚本/" class="archive-article-date">
-  	<time datetime="2019-12-03T12:39:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="XSS-分类"><a href="#XSS-分类" class="headerlink" title="XSS 分类"></a>XSS 分类</h2><pre><code>XSS(Cross Site Scripting)：攻击者在页面注入恶意的脚本代码，当受害者访问该页面时，恶意代码会在其浏览器上执行</code></pre><h3 id="放射型XSS漏洞"><a href="#放射型XSS漏洞" class="headerlink" title="放射型XSS漏洞"></a>放射型XSS漏洞</h3><h4 id="形成原因："><a href="#形成原因：" class="headerlink" title="形成原因："></a>形成原因：</h4><p>1.应用程序使用动态界面向用户显示错误信息<br>2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）<br>3.需要设计一个包含嵌入式JavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户<br>简单漏洞:<br>    <a href="http://xxx/xx/" target="_blank" rel="noopener">http://xxx/xx/</a>&lt;//p&gt;&lt;//script&gt;//alert(1)&lt;///script&gt;&lt;///p&gt;<br>    请求该Url时，生成&lt;//p&gt;&lt;//script&gt;//alert(1);&lt;///script&gt;&lt;///p&gt;HTML界面<br>    大意即是用户访问的是攻击者的url，然后攻击者的url访问用户的目标网站，然后劫持对话（要求攻击者诱使受害者访问他设计的url）</p>
-<h3 id="保存型跨站点脚本（二阶跨站点脚本）"><a href="#保存型跨站点脚本（二阶跨站点脚本）" class="headerlink" title="保存型跨站点脚本（二阶跨站点脚本）"></a>保存型跨站点脚本（二阶跨站点脚本）</h3><h4 id="产生原因："><a href="#产生原因：" class="headerlink" title="产生原因："></a>产生原因：</h4><p>一个用户提交的数据被保存在应用程序中，然后未被过滤或净化就被显示给其他用户</p>
-<h4 id="常见场景："><a href="#常见场景：" class="headerlink" title="常见场景："></a>常见场景：</h4><p>在支持终端用户交互的应用程序中，或者在于有管理员权限的员工访问同一个应用程序中的用户记录和数据的应用程序中<br>（例如攻击者向卖家提出的问题中包含了一个嵌入式JavaScript问题，而且应用程序并不过滤或净化这个JavaScript，则在其他用户查看问题时，浏览器会执行相应的攻击脚本）</p>
-<h4 id="两个请求："><a href="#两个请求：" class="headerlink" title="两个请求："></a>两个请求：</h4><pre><code>1.攻击者在第一个请求在传输一些专门设计的数据（包含恶意代码），应用程序接受并保存这些数据    
-2.受害者查看某个包含攻击者代码的页面，恶意代码开始执行</code></pre><h3 id="基于DOM的XSS漏洞"><a href="#基于DOM的XSS漏洞" class="headerlink" title="基于DOM的XSS漏洞"></a>基于DOM的XSS漏洞</h3><p>不同于前者的特殊行为方式造成的漏洞（应用程序提取用户控制的数据并以危险方式将这些数据返回给用户）</p>
-<h4 id="产生方式："><a href="#产生方式：" class="headerlink" title="产生方式："></a>产生方式：</h4><p>1.用户请求一个经过专门设计的Url（攻击者设计的）<br>2.服务器的响应中并不以任何形式宝行攻击者的脚本<br>3.当用户的浏览器开始处理这个响应时，上述脚本得以处理</p>
-<h4 id="攻击步骤："><a href="#攻击步骤：" class="headerlink" title="攻击步骤："></a>攻击步骤：</h4><pre><code>1.用户登录
-2.攻击者将自己的url反馈给用户
-3.用户向服务器请求攻击者的url
-4.服务器以含有硬编码的JavaScript页面回应
-5.攻击者的url由用户的JavaScript处理，引发有效荷载
-6.用户的浏览器向攻击者发送会话令牌
-7.攻击者截持会话</code></pre><h2 id="进行的XSS攻击"><a href="#进行的XSS攻击" class="headerlink" title="进行的XSS攻击"></a>进行的XSS攻击</h2><h3 id="XSS攻击有效载荷"><a href="#XSS攻击有效载荷" class="headerlink" title="XSS攻击有效载荷"></a>XSS攻击有效载荷</h3><h4 id="虚拟置换："><a href="#虚拟置换：" class="headerlink" title="虚拟置换："></a>虚拟置换：</h4><p>在一个Web应用程序页面注入恶意数据，从而向应用程序用户传送误导性信息。包含简单的向站点注入HTML标记，或者使用脚本在站点中注入精心设计的内容和导航。</p>
-<h4 id="注入木马功能"><a href="#注入木马功能" class="headerlink" title="注入木马功能"></a>注入木马功能</h4><p>在易受攻击的应用程序中注入实际运行的功能，旨在欺骗终端用户执行某种有害操作</p>
-<h4 id="诱导用户执行操作"><a href="#诱导用户执行操作" class="headerlink" title="诱导用户执行操作"></a>诱导用户执行操作</h4><p>利用攻击有效载荷脚本执行操作</p>
-<h4 id="利用信任关系"><a href="#利用信任关系" class="headerlink" title="利用信任关系"></a>利用信任关系</h4><p>浏览器信任由发布cookie的Web站点提交的JavaScript</p>
-<h4 id="扩大客户端攻击范围"><a href="#扩大客户端攻击范围" class="headerlink" title="扩大客户端攻击范围"></a>扩大客户端攻击范围</h4><h3 id="XSS攻击的传送机制"><a href="#XSS攻击的传送机制" class="headerlink" title="XSS攻击的传送机制"></a>XSS攻击的传送机制</h3><h4 id="传送反射性于基于DOM的XSS攻击"><a href="#传送反射性于基于DOM的XSS攻击" class="headerlink" title="传送反射性于基于DOM的XSS攻击"></a>传送反射性于基于DOM的XSS攻击</h4><h4 id="传送保存型XSS攻击"><a href="#传送保存型XSS攻击" class="headerlink" title="传送保存型XSS攻击"></a>传送保存型XSS攻击</h4><p>两种传送机制：带内和带外传送机制</p>
-<h5 id="带内："><a href="#带内：" class="headerlink" title="带内："></a>带内：</h5><p>适用于大多数情况，漏洞数据通过主Web界面提交给应用程序</p>
-<h5 id="带外："><a href="#带外：" class="headerlink" title="带外："></a>带外：</h5><p>通过其他渠道向应用程序提交漏洞数据的情况。应用程序通过这种渠道提交数据，并最终在主Web界面生成的HTML页面显示它</p>
-<h3 id="链接XSS与其他攻击"><a href="#链接XSS与其他攻击" class="headerlink" title="链接XSS与其他攻击"></a>链接XSS与其他攻击</h3><h2 id="查找并利用XSS漏洞"><a href="#查找并利用XSS漏洞" class="headerlink" title="查找并利用XSS漏洞"></a>查找并利用XSS漏洞</h2><h4 id="确定XSS漏洞基本方法"><a href="#确定XSS漏洞基本方法" class="headerlink" title="确定XSS漏洞基本方法"></a>确定XSS漏洞基本方法</h4><pre><code>提交&quot;&gt;&lt;//script&gt;//alert(document.cookie)&lt;///script&gt;到页面的每一个参数，同时监控它的响应，看是否出现相同的字符串</code></pre><h3 id="查找并利用反射型XSS漏洞"><a href="#查找并利用反射型XSS漏洞" class="headerlink" title="查找并利用反射型XSS漏洞"></a>查找并利用反射型XSS漏洞</h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><pre><code>1.在每一个进入点提交一个良性字母字符串
-2.确认此字符串“反射”在应用程序中的所有位置
-3.对于每个反射，确定显示反射型数据时的语法上下文
-4.提交针对反射的语法上下文而修改的数据，尝试在响应中引入任意脚本
-5.如果反射型数据被阻止或净化，导致脚本无法执行，则尝试了解并避开应用程序的防御性过滤</code></pre><h4 id="确认用户输入的反射"><a href="#确认用户输入的反射" class="headerlink" title="确认用户输入的反射"></a>确认用户输入的反射</h4><pre><code>1.选择任意字符串，提交（不会受到XSS过滤影响的）
-2.监控应用程序的响应，看是否出现同一字符串
-3.测试所有POST和GET请求
-4.一旦在POST请求中发现XSS，使用Burp的“change request method”确定是否可以通过GET实施相同的攻击
-5.检测HTTP请求消息头内容被应用程序处理的每一种情况</code></pre><h4 id="测试引入脚本的反射"><a href="#测试引入脚本的反射" class="headerlink" title="测试引入脚本的反射"></a>测试引入脚本的反射</h4><p>手动检查已确定的每一个反射型输入实例，核实是否确实可被利用</p>
-<h4 id="探查防御型过滤"><a href="#探查防御型过滤" class="headerlink" title="探查防御型过滤"></a>探查防御型过滤</h4><p>确定服务器对输入进行了哪些处理</p>
-<h4 id="避开基于签名的过滤"><a href="#避开基于签名的过滤" class="headerlink" title="避开基于签名的过滤"></a>避开基于签名的过滤</h4><p>确定输入的哪些字符触发了过滤</p>
-<h4 id="避开净化"><a href="#避开净化" class="headerlink" title="避开净化"></a>避开净化</h4><p>对传送攻击的某些关键代码进行HTML编码</p>
-<h4 id="突破长度限制"><a href="#突破长度限制" class="headerlink" title="突破长度限制"></a>突破长度限制</h4><p>1.尝试使用最短可能长度的JavaScriptAPI<br>2.将一个攻击有效载荷分布到几个不同的位置<br>3.将一个反射型XSS漏洞“转换”成一个基于DOM的漏洞</p>
-<h4 id="实施有效的XSS攻击"><a href="#实施有效的XSS攻击" class="headerlink" title="实施有效的XSS攻击"></a>实施有效的XSS攻击</h4><h5 id="将攻击扩展到其他应用程序页面"><a href="#将攻击扩展到其他应用程序页面" class="headerlink" title="将攻击扩展到其他应用程序页面"></a>将攻击扩展到其他应用程序页面</h5><p>设计一个可以通过应用程序的某个区域的XSS漏洞传送，并且在用户的浏览器持续存在的攻击有效载荷，就可以攻击同一个域中的目标数据或功能（例：建立一个包含整个浏览窗口的iframe）</p>
-<h5 id="修改请求方法"><a href="#修改请求方法" class="headerlink" title="修改请求方法"></a>修改请求方法</h5><p>POST-&gt;GET(GET-&gt;POST)</p>
-<h5 id="通过cookie利用XSS漏洞"><a href="#通过cookie利用XSS漏洞" class="headerlink" title="通过cookie利用XSS漏洞"></a>通过cookie利用XSS漏洞</h5><h5 id="通过Referer消息头利用XSS漏洞"><a href="#通过Referer消息头利用XSS漏洞" class="headerlink" title="通过Referer消息头利用XSS漏洞"></a>通过Referer消息头利用XSS漏洞</h5><h5 id="通过非申请标准和响应内容利用XSS漏洞"><a href="#通过非申请标准和响应内容利用XSS漏洞" class="headerlink" title="通过非申请标准和响应内容利用XSS漏洞"></a>通过非申请标准和响应内容利用XSS漏洞</h5><h5 id="传送跨域XML请求"><a href="#传送跨域XML请求" class="headerlink" title="传送跨域XML请求"></a>传送跨域XML请求</h5><h5 id="从XML响应中执行JavaScript"><a href="#从XML响应中执行JavaScript" class="headerlink" title="从XML响应中执行JavaScript"></a>从XML响应中执行JavaScript</h5><h5 id="攻击浏览器XSS过滤器"><a href="#攻击浏览器XSS过滤器" class="headerlink" title="攻击浏览器XSS过滤器"></a>攻击浏览器XSS过滤器</h5><h3 id="查找并利用保存型XSS型漏洞"><a href="#查找并利用保存型XSS型漏洞" class="headerlink" title="查找并利用保存型XSS型漏洞"></a>查找并利用保存型XSS型漏洞</h3><h4 id="步骤：-1"><a href="#步骤：-1" class="headerlink" title="步骤："></a>步骤：</h4><pre><code>1.向应用程序每一个可能的位置提交一个特殊字符，反复检查应用程序的全部内容和功能，确定这个字符在浏览器显示的任何情况
-2.检查管理员能够访问的所有应用程序区域，确认其中是否存在任何可被非管理员控制的数据
-3.提交的测试字符串可能不止作为一个页面的参数（？）
-4.在探查反射型漏洞时，应注意可控的受害者请求的每一个方面
-5.文件上传和下载功能</code></pre><h4 id="常见场景：-1"><a href="#常见场景：-1" class="headerlink" title="常见场景："></a>常见场景：</h4><p>Web邮件应用程序、上传文件</p>
-<h3 id="查找并利用基于DOM的XSS漏洞"><a href="#查找并利用基于DOM的XSS漏洞" class="headerlink" title="查找并利用基于DOM的XSS漏洞"></a>查找并利用基于DOM的XSS漏洞</h3><h4 id="确定漏洞方法："><a href="#确定漏洞方法：" class="headerlink" title="确定漏洞方法："></a>确定漏洞方法：</h4><pre><code>1.用浏览器手动浏览应用程序，并修改每一个URL参数，在其中插入一个标准测试字符串。只要包含cookie的对话框出现，就表示出现了一个漏洞
-2.检查所有客户端的JavaScript，看其中是否使用了任何可能导致漏洞的DOM属性</code></pre><h2 id="防止XSS攻击"><a href="#防止XSS攻击" class="headerlink" title="防止XSS攻击"></a>防止XSS攻击</h2><h3 id="防止反射型和保存型XSS漏洞"><a href="#防止反射型和保存型XSS漏洞" class="headerlink" title="防止反射型和保存型XSS漏洞"></a>防止反射型和保存型XSS漏洞</h3><h4 id="三重防御方法："><a href="#三重防御方法：" class="headerlink" title="三重防御方法："></a>三重防御方法：</h4><pre><code>1.确认输入（数据不是太长、仅包含某组合法字符、和一个特殊的正则表达式相匹配）
-2.确认输出（如果应用程序将提交所得的数据复制到它的响应里，要对这些数据进行HTML编码，以净化可能的恶意代码）
-3.消除危险的插入点（避免在现有的JavaScript中插入用户可控的数据）
-4.允许有限的HTML</code></pre><h3 id="防止基于DOM的XSS漏洞"><a href="#防止基于DOM的XSS漏洞" class="headerlink" title="防止基于DOM的XSS漏洞"></a>防止基于DOM的XSS漏洞</h3><pre><code>1.确认输入（确认输入的数据、查询字符串只有一个参数、参数名为message、参数仅包含字母数字内容）
-2.确认输出（HTML编码）</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">XSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/03/渗透测试/XSS-跨站脚本/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络/第三章 网络层" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/03/计算机网络/第三章 网络层/">第三章 网络层</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/03/计算机网络/第三章 网络层/" class="archive-article-date">
-  	<time datetime="2019-12-03T05:09:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><h4 id="：处理端对端数据传输的最底层"><a href="#：处理端对端数据传输的最底层" class="headerlink" title="：处理端对端数据传输的最底层"></a>：处理端对端数据传输的最底层</h4><h3 id="网络层设计问题"><a href="#网络层设计问题" class="headerlink" title="网络层设计问题"></a>网络层设计问题</h3><h4 id="存储转发数据包交换"><a href="#存储转发数据包交换" class="headerlink" title="存储转发数据包交换"></a>存储转发数据包交换</h4><p>重要组件：网络服务提供商（ISP）设备、客户端设备</p>
-<h3 id="提供给传输层的服务"><a href="#提供给传输层的服务" class="headerlink" title="提供给传输层的服务"></a>提供给传输层的服务</h3><h4 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h4><pre><code>1.向上提供的服务应该独立于路由器技术
-2.应该向传输层屏蔽路由器的数量、类型和拓扑关系
-3.传输层可用的网络应该有一个统一编址方案，甚至可以跨越LAN和WAN</code></pre><h4 id="面向连接技术"><a href="#面向连接技术" class="headerlink" title="面向连接技术"></a>面向连接技术</h4><p>多协议标签交换（MPLS）<br>VLAN</p>
-<h3 id="无连接服务的实现"><a href="#无连接服务的实现" class="headerlink" title="无连接服务的实现"></a>无连接服务的实现</h3><h4 id="无连接："><a href="#无连接：" class="headerlink" title="无连接："></a>无连接：</h4><p>数据报：数据包<br>数据报网络：对应的网络</p>
-<h4 id="面向连接："><a href="#面向连接：" class="headerlink" title="面向连接："></a>面向连接：</h4><p>虚电路：从源路由器到目标路由器之间的路径<br>虚电路网络：对应的网络</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/03/计算机网络/第三章 网络层/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-计算机网络/第二章 物理层" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1021,6 +825,171 @@
 
 
   
+    <article id="post-Linux/static-library" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/30/Linux/static-library/">static library</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/30/Linux/static-library/" class="archive-article-date">
+  	<time datetime="2019-09-30T11:21:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="静态库的创建"><a href="#静态库的创建" class="headerlink" title="静态库的创建"></a>静态库的创建</h2><h3 id="创建bill-c和fred-c文件"><a href="#创建bill-c和fred-c文件" class="headerlink" title="创建bill.c和fred.c文件"></a>创建bill.c和fred.c文件</h3><p>vim bill.c</p>
+<h3 id="生成-o文件"><a href="#生成-o文件" class="headerlink" title="生成.o文件"></a>生成.o文件</h3><p>gcc -c bill.c fred.c</p>
+<h3 id="创建库头文件"><a href="#创建库头文件" class="headerlink" title="创建库头文件"></a>创建库头文件</h3><p>vim lib.h<br>（在文件中定义bill.c及fred.c调用函数）</p>
+<h3 id="创建program-c"><a href="#创建program-c" class="headerlink" title="创建program.c"></a>创建program.c</h3><p>定义 #include “lib.h”<br>编辑主函数</p>
+<h3 id="生成-o文件-1"><a href="#生成-o文件-1" class="headerlink" title="生成.o文件"></a>生成.o文件</h3><p>gcc -c program.c</p>
+<h3 id="创建动态库"><a href="#创建动态库" class="headerlink" title="创建动态库"></a>创建动态库</h3><p>ar crv libfoo.a bill.o fred.o<br>ar —— 创建动态库<br>crv —— 将.o文件打包成.a文件</p>
+<h3 id="生成可执行文件"><a href="#生成可执行文件" class="headerlink" title="生成可执行文件"></a>生成可执行文件</h3><p>gcc -o program program.o libfoo.a</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/30/Linux/static-library/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-前端/Web-javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/30/前端/Web-javascript/">Web javascript</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/30/前端/Web-javascript/" class="archive-article-date">
+  	<time datetime="2019-09-30T06:04:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="缺省参数"><a href="#缺省参数" class="headerlink" title="缺省参数"></a>缺省参数</h1><h2 id="缺省值"><a href="#缺省值" class="headerlink" title="缺省值"></a>缺省值</h2><p>直接用 “=”<br>例：<br>function myFunction(x,y=10){<br>    return x+y;<br>}<br>myFunction(2,3) //return 5<br>myFunction(5) //return 15<br>myFunction() //return NaN</p>
+<h2 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h2><p>例：<br>function f(x,y=5,z){<br>    return [x,y,z]<br>}<br>f(1, ,2) //wrong!</p>
+<h1 id="作用域的提升"><a href="#作用域的提升" class="headerlink" title="作用域的提升"></a>作用域的提升</h1><h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><p>在整个页面中有效</p>
+<h2 id="本地变量"><a href="#本地变量" class="headerlink" title="本地变量"></a>本地变量</h2><p>在函数内有效<br>(javascipt中所有var类型变量均可变量提升，但并无初始化作用)</p>
+<p>例：<br>function otherText(){<br>    var val=”string”;<br>    …..<br>    for(var i=0;i&lt;10;i++){<br>        var val=”other”；   //出现二义性问题<br>    }<br>}</p>
+<h1 id="Use-Strict"><a href="#Use-Strict" class="headerlink" title="Use Strict"></a>Use Strict</h1><p>先声明再初始化<br>全局可以直接定义 例：x=3.14  函数内定义不行</p>
+<h1 id="Let"><a href="#Let" class="headerlink" title="Let"></a>Let</h1><p>const cars=[“S”,”V”,”B”];<br>唯一不能改的是变量的值<br>可改：<br>cars[0]=”Vi”;<br>/ cars.push(“A”)；</p>
+<p>#函数表达式<br>var sayHi=function(){<br>    alert(“Hello”);<br>}</p>
+<p>var SUM=100;<br>var i=0;<br>function Sumto(){<br>    for(i=0;i&lt;=SUM;i++){<br>        SUM=SUM+i;<br>    }<br>    return sum;<br>}</p>
+<p>const number[1,1];<br>function (n)){</p>
+<p>}</p>
+<p>let a=1,b=1;<br>let c=function fib(a,b,c){<br>    for(i=0;i&lt;SUM;i++){<br>        a=b;<br>        b=c;<br>        c=a+b;<br>    }<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/30/前端/Web-javascript/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1134,15 +1103,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Web攻击</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1150,7 +1119,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web攻击</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
             
             <div class="clearfix"></div>
