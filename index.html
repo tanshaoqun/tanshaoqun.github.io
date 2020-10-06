@@ -152,6 +152,534 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="w-我喜欢你" class="article article-type-w  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/06/我喜欢你/">我喜欢你</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/06/我喜欢你/" class="archive-article-date">
+  	<time datetime="2020-10-06T07:06:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/06/我喜欢你/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-路由通信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/路由通信/">路由通信</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/15/路由通信/" class="archive-article-date">
+  	<time datetime="2020-06-15T02:05:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>自治系统（AS）：由同一个管理机构管理、使用同一路由策略的路由器的集合<br>LAN（局域网）和广播域（为了节省ip）<br>路由器负责为数据包选择一条最优路径，并进行转发</p>
+<p>最长掩码匹配规则：路由表中如果有多个匹配目的网络的路由条目，则路由器会选择掩码最长的条目<br>缘由：网络前缀越长，地址块越小，路由越具体。数据包会直达目的地址，而不需要多次转发</p>
+<p>路由器：三层非直连通信，IP路由表（为数据包选择一条最优路径并进行转发）<br>路由表主要组成：<br>目的地址/掩码   协议   优先级 开销值   路由标记   下一跳   出接口<br>Destination/Mask Proto Pre Cost Flags NextHop Interface<br>路由类型-》路由协议优先级</p>
+<p>路由表转发数据包原则：<br>1.查看数据包目的ip，有路由匹配就转发，没有就丢弃<br>2.匹配多条路由时遵循最长掩码匹配规则<br>3.根据优先级和开销选择合适路径</p>
+<p>路由表形成方式：<br>Direct 直接把网关添加上去<br>Static 人为手动写<br>Ospf 依靠算法实现(选路原则：建立邻居关系、链路状态数据库同步、ospf路由表、使用dijkstra算法来计算以自己为根的最短路径优先树、全局路由表)</p>
+<p>如何选择最优最优路由：<br>1.最长掩码匹配原则，匹配的多条路由条目里选择掩码最长<br>2.路由优先级越小越优先<br>3.开销小的<br>4.负载分担（？）</p>
+<p>路由度量：路由度量值(Metric)表示到达这条路由所指目的地的代价，也称为路由权值(Cost)</p>
+<p>需要知道下一跳和出接口才能转发包</p>
+<p>路由表添加方式：<br>1.直连：写网关到路由器<br>2.静态：（根据优先级）由管理员手动配置和维护的路由<br>3.动态：（根据跳数）</p>
+<p>一.静态路由：三层非直连通信，路由项由手动配置，是固定的，网络安全保密性高，但是不适用于大型和复杂的网络环境<br>    在广播型的接口上配置静态路由时，必须指定下一跳地址</p>
+<pre><code>下一跳：目的地址所在设备互联地址的进接口位置</code></pre><p>二.负载分担和路由备份</p>
+<pre><code>负载分担情况，好处：
+1.当静态路由有相同目的ip地址，子网掩码，优先级，路由开销，当下一跳不同
+2.减少时延，提升传输速率、增强可靠性
+
+路由备份：在网络中主路失效的情况下，会加入到路由表并承担数据转发业务（主路才显示）    
+静态路由支持到达同一目的地的等价负载分担
+
+路由备份和负载分担有什么区别？
+路由备份到相同目的地址的下一跳和优先级都不同，优先级高的是主路由。低的是备用路由。
+负载分担到相同地址的下一跳不同，但优先级相同，到目的地流量均匀分布。同时传输数据。</code></pre><p>三.缺省路由：<br>    目的地址和掩码全是零的特殊路由，如果报文的目的地址无法匹配路由表中的任何一项，路由表就选择依照缺省路由发送</p>
+<p>路由必须要指定哪两项才能转发<br>下一跳 出接口</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/15/路由通信/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-IP地址" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/08/IP地址/">IP地址</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/08/IP地址/" class="archive-article-date">
+  	<time datetime="2020-06-08T02:04:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>IP地址分网络部分和主机部分<br>32位二进制，用十进制形式表示</p>
+<p>主机位全为0-》网段位<br>主机位全为1-》广播地址</p>
+<p>网关：转发不同网段之间的数据包（三层通信）</p>
+<p>A：8位网络位 0.0.0.0-127.255.255.255<br>B：16位 128.0.0.0-191.255.255.255.0<br>C:24位 192.0.0.0-223.255.255.255<br>D：224.0.0.0-239.255.255.255<br>每个IP地址和子网掩码一起可以用来唯一的标识一个网段中的某台网络设备<br>子网掩码中的1表示网络位，0表示主机位。</p>
+<p>私有地址范围：（解决IPV4存在地址严重匮乏的问题）<br>10.0.0.0<del>10.255.255.255<br>172.16.0.0</del>172.31.255.255<br>192.168.0.0~192.168.255.255</p>
+<p>特殊地址：<br>127.0.0.0~127.255.255.255<br>0.0.0.0<br>255.255.255.255</p>
+<p>主机位=32-网络位</p>
+<p>可变长子网掩码（VLSM）：合理划分网段，节省IP地址<br>通过改变子网掩码，将网络划分为多个子网</p>
+<p>无类别域间路由（CIDR）：将路由表中的若干路由汇聚成一条路由，减少路由器的规模，提高路由器的可扩展性<br>加快查表速度，减少网络时延</p>
+<p>1100 0000 1010 1000 0000 0001 0000 0000<br>32-7=25  0-127 1-126 可用：126<br>192.168.1.0/25<br>32-6=26     128-191 129-190  可用：60<br>192.168.1.128/26<br>32-5=27  192-223 193-222 可用：30<br>192.168.1.192/27<br>32-3=29  224-231 225-230 可用：6<br>192.168.1.224/29</p>
+<p>1100 0000 1010 1000 0000 0001 0000 0000<br>1100 0000 1010 1000 0000 0010 0000 0000}<br>1100 0000 1010 1000 0000 0011 0000 0000}<br>1100 0000 1010 1000 0000 0010 0000 0000/23</p>
+<p>1100 0000 1010 1000 0000 0100 0000 0000</p>
+<p>0000 1010 0100 0100 1010 1010 0000 0000/24<br>0000 1010 0100 0100 1010 1010 0000 0000</p>
+<p>0000 1010 0100 0100 1010 1010 1000 0000/25<br>0000 1010 0100 0100 1010 1010 1000 0000</p>
+<p>0000 1010 0100 0100 1010 1010 1100 0000/26<br>0000 1010 0100 0100 1010 1010 1100 0000</p>
+<p>0000 1010 0100 0100 1010 1010 1110 0000/27<br>0000 1010 0100 0100 1010 1010 1110 0000<br>0000 1010 0100 0100 1010 1010 1111 0000</p>
+<p>1100 0000 1010 1000 0001 0100 0001 0000<br>1100 0000 1010 1000 0000 0000 0000 0000</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/08/IP地址/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-HTTP协议-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/HTTP协议-1/">HTTP协议--1</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/04/HTTP协议-1/" class="archive-article-date">
+  	<time datetime="2020-06-04T05:25:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>定义：主要规定了客户端和服务器之间的通信</p>
+<p>服务器只能回应HTML格式的字符串</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/04/HTTP协议-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-VLAN" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/03/VLAN/">VLAN</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/03/VLAN/" class="archive-article-date">
+  	<time datetime="2020-06-03T02:10:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>VLAN：数据链路层中的概念，用来隔离广播域（二层技术）</p>
+<p>传统以太网络：<br>总线架构：使用集线器（HVB），以广播形式传播<br>信息泄露、占用资源、同一时间只能一台主机在用（通率），相当于单通道</p>
+<p>二层通信：<br>MAC地址表（记录mac地址和接口的关系）<br>mac先为空，先泛洪                                                                    </p>
+<p>eNSP<br>1.创建VLAN<br>2.修改接口类型<br>3.设置接口允许通过VLAN ID<br>查看系统视图 system-view<br>查看mac地址表 display mac-address（路由上命令）<br>mac地址 VLAN 接口<br>创建VLAN batch VLAN名<br>查看 diaplay THIS<br>配置 interface G补全 端口<br>     port link-type access/trunk<br>     port default vlan VLAN号<br>设置可通过 port trunk allow-pass vlan VLAN号<br>查看接口VLAN display vlan（路由上）</p>
+<p>通过tag区分不同VLAN<br>不同VLAN ping失败（主机上命令）</p>
+<p>Access：接入链路<br>Trunk：干道链路</p>
+<p>接口都会有一个PVID，即默认的端口VLANid，默认都是1<br>交换机只接收有tag的帧，裸帧默认PVID是1</p>
+<p>Access<br>一次只能一个VLAN，一个接口一个VLANID<br>进打出拨<br>端口接收数据打上VLANid，和PVID相同<br>转发时移除VLAN tag</p>
+<p>PVID和主机VLAN有关</p>
+<p>Trunk<br>接收：不含tag，添上端口PVID</p>
+<p>发送：VLAN ID 在允许发送列表：和端口PVID相同，剥离tag发送<br>                            不相同，直接发送</p>
+<p>MAC地址表学习过程：<br>初始化：没有任何MAC地址和端口的映射条目<br>开始通信：数据帧中的源MAC地址和接收该数据帧的端口建立映射关系，并将映射关系生成映射条目保存到MAC地址表中<br>广播，得到目标主机回应，进新映射关系记录</p>
+<p>泛洪和广播的区别：<br>泛洪操作广播的是普通数据帧而不是广播帧。</p>
+<p>广播是向同一子网内所有的端口（包括自己的那个端口）发送消息； 泛洪只是在所有的端口中不包括发送消息的（自己的）那个端口发送消息。</p>
+<p>路由器：网络层<br>交换机：数据链路层<br>集线器：物理层</p>
+<p>交换机如何学习MAC地址的</p>
+<p>假设一个交换机刚刚启动，MAC表完全是空的，局域网内有两台主机PC1和PC2，IP地址为192.168.0.1和192.168.0.2：那么交换机接到1端口的PC1的第一个数据帧，因为PC1只知道PC2的IP地址而不知道PC2的MAC地址，所以源IP地址为192.168.0.1源MAC地址是0000-0000-0001，目标IP地址为192.168.0.2而目标MAC地址是FFFF-FFFF-FFFF(此报文为ARP请求报文，是二层广播报问)，交换机首先将源MAC地址和相对应的端口记录在MAC表中，然后把这个数据帧从所有活动的端口转发出去，;假设PC2在2端口接收到数据帧对数据进行回应时，则目标MAC地址为0000-0000-0001源MAC地址为0000-0000-0002。此时交换机收到数据帧后，首先学习PC2的MAC地址和对应端口到MAC表，然后查找MAC地址表中是否有PC1的MAC地址，发现目标MAC地址对应端口1，则将此数据帧由交换机的1端口转发出去。此时PC1和PC2的MAC地址都已记录在交换机MAC表中，数据在开始正常转发。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">网络基本知识</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/03/VLAN/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/03/1/">1</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/03/1/" class="archive-article-date">
+  	<time datetime="2020-06-03T02:00:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/.com//01b1735e50293ca80120a8959bb4c2.jpg@2o.jpg" alt="test"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/03/1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Linux/配置Apache-PHP-MySQL环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/02/Linux/配置Apache-PHP-MySQL环境/">配置Apache+PHP+MySQL环境</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/02/Linux/配置Apache-PHP-MySQL环境/" class="archive-article-date">
+  	<time datetime="2020-06-02T13:20:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="找到-config-yml文件，修改参数，这样每次新建-md文件时都会自动生成同名文件夹"><a href="#找到-config-yml文件，修改参数，这样每次新建-md文件时都会自动生成同名文件夹" class="headerlink" title="找到_config.yml文件，修改参数，这样每次新建.md文件时都会自动生成同名文件夹"></a>找到_config.yml文件，修改参数，这样每次新建.md文件时都会自动生成同名文件夹</h3><p><img src="/.com//%E9%85%8D%E7%BD%AEApache-PHP-MySQL%E7%8E%AF%E5%A2%83/QQ%E6%88%AA%E5%9B%BE20200602211347.jpg" alt="1"><br><img src="/.com//%5C%E9%85%8D%E7%BD%AEApache-PHP-MySQL%E7%8E%AF%E5%A2%83%5CQQ%E6%88%AA%E5%9B%BE20200602211527.jpg" alt="test"> </p>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/02/Linux/配置Apache-PHP-MySQL环境/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-渗透测试/同源策略" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -380,631 +908,9 @@ htmlspecialchars(输入的字符串)</code></pre><h3 id="XSS-stored-存储型跨
 
 
   
-    <article id="post-渗透测试/XSS-跨站脚本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/03/渗透测试/XSS-跨站脚本/">XSS 跨站脚本</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/03/渗透测试/XSS-跨站脚本/" class="archive-article-date">
-  	<time datetime="2019-12-03T12:39:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="XSS-分类"><a href="#XSS-分类" class="headerlink" title="XSS 分类"></a>XSS 分类</h2><pre><code>XSS(Cross Site Scripting)：攻击者在页面注入恶意的脚本代码，当受害者访问该页面时，恶意代码会在其浏览器上执行</code></pre><h3 id="放射型XSS漏洞"><a href="#放射型XSS漏洞" class="headerlink" title="放射型XSS漏洞"></a>放射型XSS漏洞</h3><h4 id="形成原因："><a href="#形成原因：" class="headerlink" title="形成原因："></a>形成原因：</h4><p>1.应用程序使用动态界面向用户显示错误信息<br>2.未实施任何过滤或者净化设施（例：提取用户提交的输入并将其插入到服务器响应的HTML代码中）<br>3.需要设计一个包含嵌入式JavaScript代码的请求，随后这些代码又被反射到任何提出请求的用户<br>简单漏洞:<br>    <a href="http://xxx/xx/" target="_blank" rel="noopener">http://xxx/xx/</a>&lt;//p&gt;&lt;//script&gt;//alert(1)&lt;///script&gt;&lt;///p&gt;<br>    请求该Url时，生成&lt;//p&gt;&lt;//script&gt;//alert(1);&lt;///script&gt;&lt;///p&gt;HTML界面<br>    大意即是用户访问的是攻击者的url，然后攻击者的url访问用户的目标网站，然后劫持对话（要求攻击者诱使受害者访问他设计的url）</p>
-<h3 id="保存型跨站点脚本（二阶跨站点脚本）"><a href="#保存型跨站点脚本（二阶跨站点脚本）" class="headerlink" title="保存型跨站点脚本（二阶跨站点脚本）"></a>保存型跨站点脚本（二阶跨站点脚本）</h3><h4 id="产生原因："><a href="#产生原因：" class="headerlink" title="产生原因："></a>产生原因：</h4><p>一个用户提交的数据被保存在应用程序中，然后未被过滤或净化就被显示给其他用户</p>
-<h4 id="常见场景："><a href="#常见场景：" class="headerlink" title="常见场景："></a>常见场景：</h4><p>在支持终端用户交互的应用程序中，或者在于有管理员权限的员工访问同一个应用程序中的用户记录和数据的应用程序中<br>（例如攻击者向卖家提出的问题中包含了一个嵌入式JavaScript问题，而且应用程序并不过滤或净化这个JavaScript，则在其他用户查看问题时，浏览器会执行相应的攻击脚本）</p>
-<h4 id="两个请求："><a href="#两个请求：" class="headerlink" title="两个请求："></a>两个请求：</h4><pre><code>1.攻击者在第一个请求在传输一些专门设计的数据（包含恶意代码），应用程序接受并保存这些数据    
-2.受害者查看某个包含攻击者代码的页面，恶意代码开始执行</code></pre><h3 id="基于DOM的XSS漏洞"><a href="#基于DOM的XSS漏洞" class="headerlink" title="基于DOM的XSS漏洞"></a>基于DOM的XSS漏洞</h3><p>不同于前者的特殊行为方式造成的漏洞（应用程序提取用户控制的数据并以危险方式将这些数据返回给用户）</p>
-<h4 id="产生方式："><a href="#产生方式：" class="headerlink" title="产生方式："></a>产生方式：</h4><p>1.用户请求一个经过专门设计的Url（攻击者设计的）<br>2.服务器的响应中并不以任何形式宝行攻击者的脚本<br>3.当用户的浏览器开始处理这个响应时，上述脚本得以处理</p>
-<h4 id="攻击步骤："><a href="#攻击步骤：" class="headerlink" title="攻击步骤："></a>攻击步骤：</h4><pre><code>1.用户登录
-2.攻击者将自己的url反馈给用户
-3.用户向服务器请求攻击者的url
-4.服务器以含有硬编码的JavaScript页面回应
-5.攻击者的url由用户的JavaScript处理，引发有效荷载
-6.用户的浏览器向攻击者发送会话令牌
-7.攻击者截持会话</code></pre><h2 id="进行的XSS攻击"><a href="#进行的XSS攻击" class="headerlink" title="进行的XSS攻击"></a>进行的XSS攻击</h2><h3 id="XSS攻击有效载荷"><a href="#XSS攻击有效载荷" class="headerlink" title="XSS攻击有效载荷"></a>XSS攻击有效载荷</h3><h4 id="虚拟置换："><a href="#虚拟置换：" class="headerlink" title="虚拟置换："></a>虚拟置换：</h4><p>在一个Web应用程序页面注入恶意数据，从而向应用程序用户传送误导性信息。包含简单的向站点注入HTML标记，或者使用脚本在站点中注入精心设计的内容和导航。</p>
-<h4 id="注入木马功能"><a href="#注入木马功能" class="headerlink" title="注入木马功能"></a>注入木马功能</h4><p>在易受攻击的应用程序中注入实际运行的功能，旨在欺骗终端用户执行某种有害操作</p>
-<h4 id="诱导用户执行操作"><a href="#诱导用户执行操作" class="headerlink" title="诱导用户执行操作"></a>诱导用户执行操作</h4><p>利用攻击有效载荷脚本执行操作</p>
-<h4 id="利用信任关系"><a href="#利用信任关系" class="headerlink" title="利用信任关系"></a>利用信任关系</h4><p>浏览器信任由发布cookie的Web站点提交的JavaScript</p>
-<h4 id="扩大客户端攻击范围"><a href="#扩大客户端攻击范围" class="headerlink" title="扩大客户端攻击范围"></a>扩大客户端攻击范围</h4><h3 id="XSS攻击的传送机制"><a href="#XSS攻击的传送机制" class="headerlink" title="XSS攻击的传送机制"></a>XSS攻击的传送机制</h3><h4 id="传送反射性于基于DOM的XSS攻击"><a href="#传送反射性于基于DOM的XSS攻击" class="headerlink" title="传送反射性于基于DOM的XSS攻击"></a>传送反射性于基于DOM的XSS攻击</h4><h4 id="传送保存型XSS攻击"><a href="#传送保存型XSS攻击" class="headerlink" title="传送保存型XSS攻击"></a>传送保存型XSS攻击</h4><p>两种传送机制：带内和带外传送机制</p>
-<h5 id="带内："><a href="#带内：" class="headerlink" title="带内："></a>带内：</h5><p>适用于大多数情况，漏洞数据通过主Web界面提交给应用程序</p>
-<h5 id="带外："><a href="#带外：" class="headerlink" title="带外："></a>带外：</h5><p>通过其他渠道向应用程序提交漏洞数据的情况。应用程序通过这种渠道提交数据，并最终在主Web界面生成的HTML页面显示它</p>
-<h3 id="链接XSS与其他攻击"><a href="#链接XSS与其他攻击" class="headerlink" title="链接XSS与其他攻击"></a>链接XSS与其他攻击</h3><h2 id="查找并利用XSS漏洞"><a href="#查找并利用XSS漏洞" class="headerlink" title="查找并利用XSS漏洞"></a>查找并利用XSS漏洞</h2><h4 id="确定XSS漏洞基本方法"><a href="#确定XSS漏洞基本方法" class="headerlink" title="确定XSS漏洞基本方法"></a>确定XSS漏洞基本方法</h4><pre><code>提交&quot;&gt;&lt;//script&gt;//alert(document.cookie)&lt;///script&gt;到页面的每一个参数，同时监控它的响应，看是否出现相同的字符串</code></pre><h3 id="查找并利用反射型XSS漏洞"><a href="#查找并利用反射型XSS漏洞" class="headerlink" title="查找并利用反射型XSS漏洞"></a>查找并利用反射型XSS漏洞</h3><h4 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h4><pre><code>1.在每一个进入点提交一个良性字母字符串
-2.确认此字符串“反射”在应用程序中的所有位置
-3.对于每个反射，确定显示反射型数据时的语法上下文
-4.提交针对反射的语法上下文而修改的数据，尝试在响应中引入任意脚本
-5.如果反射型数据被阻止或净化，导致脚本无法执行，则尝试了解并避开应用程序的防御性过滤</code></pre><h4 id="确认用户输入的反射"><a href="#确认用户输入的反射" class="headerlink" title="确认用户输入的反射"></a>确认用户输入的反射</h4><pre><code>1.选择任意字符串，提交（不会受到XSS过滤影响的）
-2.监控应用程序的响应，看是否出现同一字符串
-3.测试所有POST和GET请求
-4.一旦在POST请求中发现XSS，使用Burp的“change request method”确定是否可以通过GET实施相同的攻击
-5.检测HTTP请求消息头内容被应用程序处理的每一种情况</code></pre><h4 id="测试引入脚本的反射"><a href="#测试引入脚本的反射" class="headerlink" title="测试引入脚本的反射"></a>测试引入脚本的反射</h4><p>手动检查已确定的每一个反射型输入实例，核实是否确实可被利用</p>
-<h4 id="探查防御型过滤"><a href="#探查防御型过滤" class="headerlink" title="探查防御型过滤"></a>探查防御型过滤</h4><p>确定服务器对输入进行了哪些处理</p>
-<h4 id="避开基于签名的过滤"><a href="#避开基于签名的过滤" class="headerlink" title="避开基于签名的过滤"></a>避开基于签名的过滤</h4><p>确定输入的哪些字符触发了过滤</p>
-<h4 id="避开净化"><a href="#避开净化" class="headerlink" title="避开净化"></a>避开净化</h4><p>对传送攻击的某些关键代码进行HTML编码</p>
-<h4 id="突破长度限制"><a href="#突破长度限制" class="headerlink" title="突破长度限制"></a>突破长度限制</h4><p>1.尝试使用最短可能长度的JavaScriptAPI<br>2.将一个攻击有效载荷分布到几个不同的位置<br>3.将一个反射型XSS漏洞“转换”成一个基于DOM的漏洞</p>
-<h4 id="实施有效的XSS攻击"><a href="#实施有效的XSS攻击" class="headerlink" title="实施有效的XSS攻击"></a>实施有效的XSS攻击</h4><h5 id="将攻击扩展到其他应用程序页面"><a href="#将攻击扩展到其他应用程序页面" class="headerlink" title="将攻击扩展到其他应用程序页面"></a>将攻击扩展到其他应用程序页面</h5><p>设计一个可以通过应用程序的某个区域的XSS漏洞传送，并且在用户的浏览器持续存在的攻击有效载荷，就可以攻击同一个域中的目标数据或功能（例：建立一个包含整个浏览窗口的iframe）</p>
-<h5 id="修改请求方法"><a href="#修改请求方法" class="headerlink" title="修改请求方法"></a>修改请求方法</h5><p>POST-&gt;GET(GET-&gt;POST)</p>
-<h5 id="通过cookie利用XSS漏洞"><a href="#通过cookie利用XSS漏洞" class="headerlink" title="通过cookie利用XSS漏洞"></a>通过cookie利用XSS漏洞</h5><h5 id="通过Referer消息头利用XSS漏洞"><a href="#通过Referer消息头利用XSS漏洞" class="headerlink" title="通过Referer消息头利用XSS漏洞"></a>通过Referer消息头利用XSS漏洞</h5><h5 id="通过非申请标准和响应内容利用XSS漏洞"><a href="#通过非申请标准和响应内容利用XSS漏洞" class="headerlink" title="通过非申请标准和响应内容利用XSS漏洞"></a>通过非申请标准和响应内容利用XSS漏洞</h5><h5 id="传送跨域XML请求"><a href="#传送跨域XML请求" class="headerlink" title="传送跨域XML请求"></a>传送跨域XML请求</h5><h5 id="从XML响应中执行JavaScript"><a href="#从XML响应中执行JavaScript" class="headerlink" title="从XML响应中执行JavaScript"></a>从XML响应中执行JavaScript</h5><h5 id="攻击浏览器XSS过滤器"><a href="#攻击浏览器XSS过滤器" class="headerlink" title="攻击浏览器XSS过滤器"></a>攻击浏览器XSS过滤器</h5><h3 id="查找并利用保存型XSS型漏洞"><a href="#查找并利用保存型XSS型漏洞" class="headerlink" title="查找并利用保存型XSS型漏洞"></a>查找并利用保存型XSS型漏洞</h3><h4 id="步骤：-1"><a href="#步骤：-1" class="headerlink" title="步骤："></a>步骤：</h4><pre><code>1.向应用程序每一个可能的位置提交一个特殊字符，反复检查应用程序的全部内容和功能，确定这个字符在浏览器显示的任何情况
-2.检查管理员能够访问的所有应用程序区域，确认其中是否存在任何可被非管理员控制的数据
-3.提交的测试字符串可能不止作为一个页面的参数（？）
-4.在探查反射型漏洞时，应注意可控的受害者请求的每一个方面
-5.文件上传和下载功能</code></pre><h4 id="常见场景：-1"><a href="#常见场景：-1" class="headerlink" title="常见场景："></a>常见场景：</h4><p>Web邮件应用程序、上传文件</p>
-<h3 id="查找并利用基于DOM的XSS漏洞"><a href="#查找并利用基于DOM的XSS漏洞" class="headerlink" title="查找并利用基于DOM的XSS漏洞"></a>查找并利用基于DOM的XSS漏洞</h3><h4 id="确定漏洞方法："><a href="#确定漏洞方法：" class="headerlink" title="确定漏洞方法："></a>确定漏洞方法：</h4><pre><code>1.用浏览器手动浏览应用程序，并修改每一个URL参数，在其中插入一个标准测试字符串。只要包含cookie的对话框出现，就表示出现了一个漏洞
-2.检查所有客户端的JavaScript，看其中是否使用了任何可能导致漏洞的DOM属性</code></pre><h2 id="防止XSS攻击"><a href="#防止XSS攻击" class="headerlink" title="防止XSS攻击"></a>防止XSS攻击</h2><h3 id="防止反射型和保存型XSS漏洞"><a href="#防止反射型和保存型XSS漏洞" class="headerlink" title="防止反射型和保存型XSS漏洞"></a>防止反射型和保存型XSS漏洞</h3><h4 id="三重防御方法："><a href="#三重防御方法：" class="headerlink" title="三重防御方法："></a>三重防御方法：</h4><pre><code>1.确认输入（数据不是太长、仅包含某组合法字符、和一个特殊的正则表达式相匹配）
-2.确认输出（如果应用程序将提交所得的数据复制到它的响应里，要对这些数据进行HTML编码，以净化可能的恶意代码）
-3.消除危险的插入点（避免在现有的JavaScript中插入用户可控的数据）
-4.允许有限的HTML</code></pre><h3 id="防止基于DOM的XSS漏洞"><a href="#防止基于DOM的XSS漏洞" class="headerlink" title="防止基于DOM的XSS漏洞"></a>防止基于DOM的XSS漏洞</h3><pre><code>1.确认输入（确认输入的数据、查询字符串只有一个参数、参数名为message、参数仅包含字母数字内容）
-2.确认输出（HTML编码）</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">XSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/03/渗透测试/XSS-跨站脚本/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络/第三章 网络层" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/03/计算机网络/第三章 网络层/">第三章 网络层</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/03/计算机网络/第三章 网络层/" class="archive-article-date">
-  	<time datetime="2019-12-03T05:09:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><h4 id="：处理端对端数据传输的最底层"><a href="#：处理端对端数据传输的最底层" class="headerlink" title="：处理端对端数据传输的最底层"></a>：处理端对端数据传输的最底层</h4><h3 id="网络层设计问题"><a href="#网络层设计问题" class="headerlink" title="网络层设计问题"></a>网络层设计问题</h3><h4 id="存储转发数据包交换"><a href="#存储转发数据包交换" class="headerlink" title="存储转发数据包交换"></a>存储转发数据包交换</h4><p>重要组件：网络服务提供商（ISP）设备、客户端设备</p>
-<h3 id="提供给传输层的服务"><a href="#提供给传输层的服务" class="headerlink" title="提供给传输层的服务"></a>提供给传输层的服务</h3><h4 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h4><pre><code>1.向上提供的服务应该独立于路由器技术
-2.应该向传输层屏蔽路由器的数量、类型和拓扑关系
-3.传输层可用的网络应该有一个统一编址方案，甚至可以跨越LAN和WAN</code></pre><h4 id="面向连接技术"><a href="#面向连接技术" class="headerlink" title="面向连接技术"></a>面向连接技术</h4><p>多协议标签交换（MPLS）<br>VLAN</p>
-<h3 id="无连接服务的实现"><a href="#无连接服务的实现" class="headerlink" title="无连接服务的实现"></a>无连接服务的实现</h3><h4 id="无连接："><a href="#无连接：" class="headerlink" title="无连接："></a>无连接：</h4><p>数据报：数据包<br>数据报网络：对应的网络</p>
-<h4 id="面向连接："><a href="#面向连接：" class="headerlink" title="面向连接："></a>面向连接：</h4><p>虚电路：从源路由器到目标路由器之间的路径<br>虚电路网络：对应的网络</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/03/计算机网络/第三章 网络层/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络/第二章 物理层" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/03/计算机网络/第二章 物理层/">第二章 物理层</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/03/计算机网络/第二章 物理层/" class="archive-article-date">
-  	<time datetime="2019-12-03T01:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><p>该层定义了比特做为信号在信道上发送时相关的电气、时序和其他接口</p>
-<h3 id="数据通信理论基础"><a href="#数据通信理论基础" class="headerlink" title="数据通信理论基础"></a>数据通信理论基础</h3><p>傅里叶分析：任何一个周期函数，都可以表示成正弦函数和余弦函数组成的无穷级函数</p>
-<h3 id="带宽有限的信号"><a href="#带宽有限的信号" class="headerlink" title="带宽有限的信号"></a>带宽有限的信号</h3><p>带宽：在传输过程中振幅不会明显减弱的频率的宽度（bandwidth），是传输介质的一种物理特性，可用滤波器进行限制<br>基带：从0到某个最大频率的信号<br>通带信号：被搬运并占用更大频率范围的信号</p>
-<h3 id="信道最大数据速率"><a href="#信道最大数据速率" class="headerlink" title="信道最大数据速率"></a>信道最大数据速率</h3><h3 id="引导性传输介质"><a href="#引导性传输介质" class="headerlink" title="引导性传输介质"></a>引导性传输介质</h3><p>（引导性（有线介质），非引导性（无限介质））</p>
-<h4 id="磁介质"><a href="#磁介质" class="headerlink" title="磁介质"></a>磁介质</h4><h4 id="双绞线"><a href="#双绞线" class="headerlink" title="双绞线"></a>双绞线</h4><p>全双工：可同时双向<br>半双工：可双向，但一个时刻单向<br>单工：单向</p>
-<h4 id="同轴电缆"><a href="#同轴电缆" class="headerlink" title="同轴电缆"></a>同轴电缆</h4><h4 id="电力线"><a href="#电力线" class="headerlink" title="电力线"></a>电力线</h4><h4 id="光纤"><a href="#光纤" class="headerlink" title="光纤"></a>光纤</h4><h3 id="无线传输"><a href="#无线传输" class="headerlink" title="无线传输"></a>无线传输</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/03/计算机网络/第二章 物理层/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络/第一章 引言" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/01/计算机网络/第一章 引言/">第一章 引言</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/01/计算机网络/第一章 引言/" class="archive-article-date">
-  	<time datetime="2019-12-01T08:03:58.916Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="计网：相互独立但彼此连接的计算机共同完成计算任务的系统（一组通过单一技术相连接的自主计算机集合）"><a href="#计网：相互独立但彼此连接的计算机共同完成计算任务的系统（一组通过单一技术相连接的自主计算机集合）" class="headerlink" title="计网：相互独立但彼此连接的计算机共同完成计算任务的系统（一组通过单一技术相连接的自主计算机集合）"></a>计网：相互独立但彼此连接的计算机共同完成计算任务的系统（一组通过单一技术相连接的自主计算机集合）</h2><p>分布式系统：建立在网络上的软件系统（由操作系统上一层软件（中间件）实现）（例子：万维网）</p>
-<h2 id="使用原因"><a href="#使用原因" class="headerlink" title="使用原因"></a>使用原因</h2><h3 id="资源共享"><a href="#资源共享" class="headerlink" title="资源共享"></a>资源共享</h3><p>VPN：虚拟专用网络（可将不同地点的单个网络连结成一个扩展的网络）<br>客户机-服务器模型</p>
-<h3 id="连通性"><a href="#连通性" class="headerlink" title="连通性"></a>连通性</h3><h2 id="分类标准"><a href="#分类标准" class="headerlink" title="分类标准"></a>分类标准</h2><h3 id="传播技术"><a href="#传播技术" class="headerlink" title="传播技术"></a>传播技术</h3><h4 id="广播式链路"><a href="#广播式链路" class="headerlink" title="广播式链路"></a>广播式链路</h4><p>信道被网络上所有机器共享，任何一个机器发出的数据包能被所有其他任何机器收到<br>广播：数据包地址字段有一份段特殊编码，网络上所有机器都会接收该包并对其进行处理<br>组播：给一组机器发送数据包</p>
-<h4 id="点到点链路"><a href="#点到点链路" class="headerlink" title="点到点链路"></a>点到点链路</h4><p>点到点链路：（单播）只有一个发送方和一个接收方<br>注意点：需要找一条好的路由</p>
-<h3 id="网络尺度"><a href="#网络尺度" class="headerlink" title="网络尺度"></a>网络尺度</h3><h4 id="个域网"><a href="#个域网" class="headerlink" title="个域网"></a>个域网</h4><p>设备围绕一个人进行通信</p>
-<h4 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h4><p>一种私人网络，被广泛用于连接个人计算机和消费类电子设备，使其能够共享资源和交换信息<br>接入点（AP）、无线路由、基站<br>无线局域网标准：IEEE 802.11（WiFi）<br>以太网（Ethernet）：IEEE 802.3（交换机、端口）<br>虚拟局域网（Virtual LAN/VLAN）</p>
-<h4 id="城域网（MAN）"><a href="#城域网（MAN）" class="headerlink" title="城域网（MAN）"></a>城域网（MAN）</h4><p>范围可覆盖一个城市<br>WiMAX：IEEE 802.16</p>
-<h4 id="广域网"><a href="#广域网" class="headerlink" title="广域网"></a>广域网</h4><p>主机、通信子网/子网（作用于将信息从一个主机携带到另一个主机）{传输线路、交换元素/交换机}<br>虚拟专用网络（VPN）</p>
-<h4 id="互联网"><a href="#互联网" class="headerlink" title="互联网"></a>互联网</h4><p>因特网（Internet）<br>网关：将两个或多个网络连接起来并提供必要转换</p>
-<h2 id="协议层次结构"><a href="#协议层次结构" class="headerlink" title="协议层次结构"></a>协议层次结构</h2><h3 id="层次栈、分级栈"><a href="#层次栈、分级栈" class="headerlink" title="层次栈、分级栈"></a>层次栈、分级栈</h3><p>层次之间的是接口，定义了下层向上层提供哪些源语操作和服务<br>网络体系结构层和协议的集合<br>最下面： 物理层（physical medium）：物理传输<br>第二层： 数据链路层：第二层协议，加头部和尾部<br>第三层： 网络层 ：第三层协议，入境信息分割成数据包，添加头部<br>第四层： 传输层 ：第四层协议，加头部，标识消息<br>第五层： 应用层 ：第五层协议，产生消息<br>接收端：信息自底向上逐层传递，在传输过程中各个头被逐层剥离</p>
-<h2 id="层次设计"><a href="#层次设计" class="headerlink" title="层次设计"></a>层次设计</h2><h3 id="可靠性"><a href="#可靠性" class="headerlink" title="可靠性"></a>可靠性</h3><p>检错代码、纠错代码</p>
-<h3 id="网络演进"><a href="#网络演进" class="headerlink" title="网络演进"></a>网络演进</h3><p>寻址、命名</p>
-<h3 id="资源分配"><a href="#资源分配" class="headerlink" title="资源分配"></a>资源分配</h3><p>统计复用<br>流量控制</p>
-<h3 id="抵御网络威胁"><a href="#抵御网络威胁" class="headerlink" title="抵御网络威胁"></a>抵御网络威胁</h3><p>保密性机制<br>认证机制<br>完整性机制</p>
-<h2 id="下层向上层提供的服务"><a href="#下层向上层提供的服务" class="headerlink" title="下层向上层提供的服务"></a>下层向上层提供的服务</h2><p>面向连接的服务<br>无连接服务</p>
-<h2 id="服务原语"><a href="#服务原语" class="headerlink" title="服务原语"></a>服务原语</h2><p>服务：某一层向它上一层提供的一组原语，涉及层与层之间的接口（区分 协议：涉及不同机器上的两个对等实体之间发送的数据包）<br>一个服务由一组原语正式说明，用户进程通过原语（操作）访问该服务</p>
-<h2 id="参考模型"><a href="#参考模型" class="headerlink" title="参考模型"></a>参考模型</h2><h3 id="OSI"><a href="#OSI" class="headerlink" title="OSI"></a>OSI</h3><p>7层：{物理层（在一条通信通道上传输原始比特）、数据链路层（将一个原始传输设备准变成一条欸有漏洞传输错误的线路（将错误掩藏起来）、避免一个快速方用数据“淹没”一个慢速接收方）、网络层（控制子网运行、处理拥塞）、传输层（接收上一次数据，分割，确认传递到网络层）、会话层（会话控制、令牌管理、同步功能）、表示层（所传输信息的语法和语义）、应用层（TTTP）}</p>
-<h3 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h3><p>设计目标：<br>    以无缝方式连接多个网络<br>    即使在损失子网硬件的情况下网络还能继续工作，原有的对话还能够继续工作<br>5层：{链路层（DSL（数字用户线）、SONET、802.11、Ethernet）、互联网层(IP、ICMP)、传输层（TCP、UDP）、应用层（HTTP、SMTP、RTP、DNS（域名系统））}</p>
-<h2 id="无线局域网：802-11"><a href="#无线局域网：802-11" class="headerlink" title="无线局域网：802.11"></a>无线局域网：802.11</h2><p>自组织网络：两台计算机直接进行通信<br>多径衰落：回波可能相互抵消或者互为因果，造成接收到的信号出现大幅波动（策略：路径多样性）</p>
-<h2 id="RFID和传感器网络"><a href="#RFID和传感器网络" class="headerlink" title="RFID和传感器网络"></a>RFID和传感器网络</h2><p>无线射频识别:RFID<br>    无源RFID<br>    有源RFID</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/01/计算机网络/第一章 引言/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端/CSS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/21/前端/CSS/">CSS</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/21/前端/CSS/" class="archive-article-date">
-  	<time datetime="2019-10-21T03:02:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="层次选择器"><a href="#层次选择器" class="headerlink" title="层次选择器"></a>层次选择器</h2><p>例：<br>div p{</p>
-<p>}</p>
-<p>div &gt;p{</p>
-<p>}</p>
-<p>div +p{</p>
-<p>}</p>
-<p>div ~p{</p>
-<p>}</p>
-<h2 id="hover-鼠标悬浮"><a href="#hover-鼠标悬浮" class="headerlink" title="hover(鼠标悬浮)"></a>hover(鼠标悬浮)</h2><p>p:hover    (鼠标悬浮在p上)<br>a:visited     (访问过的链接)<br>a:link</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/21/前端/CSS/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端/JavaScript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/11/前端/JavaScript/">JavaScript</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/11/前端/JavaScript/" class="archive-article-date">
-  	<time datetime="2019-10-11T14:16:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简洁"><a href="#简洁" class="headerlink" title="简洁"></a>简洁</h2><p>原：<br>var cube,square;</p>
-<p>square=function(x){<br>    return x<em>x;<br>};<br>cube=function(x){<br>    return square(x)</em>x;<br>};<br>改：<br>square=(x)-&gt;x<em>x<br>cube=(x)-&gt;square(x)</em>x</p>
-<h2 id="在HTML文档中嵌入JavaScript脚本"><a href="#在HTML文档中嵌入JavaScript脚本" class="headerlink" title="在HTML文档中嵌入JavaScript脚本"></a>在HTML文档中嵌入JavaScript脚本</h2><script type="text/javascript">
-    ...JavaScript code...
-</script>
-<p>alert(“…”); //弹出消息框提示</p>
-<h2 id="JavaScript插入head、body都可以"><a href="#JavaScript插入head、body都可以" class="headerlink" title="JavaScript插入head、body都可以"></a>JavaScript插入head、body都可以</h2><h2 id="JavaScript-variable："><a href="#JavaScript-variable：" class="headerlink" title="JavaScript variable："></a>JavaScript variable：</h2><h3 id="number："><a href="#number：" class="headerlink" title="number："></a>number：</h3><p>特殊类型：1/0==Infinity(无穷大)<br>Math.sprt(-1)==NaN<br>JavaScript中的浮点数运算并不是百分百准确<br>0.1+0.2 可改成 ((0.1<em>10+0.2</em>10)/10)</p>
-<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>字符串必须用引号圈起来<br>三种引号：</p>
-<ol>
-<li>“”</li>
-<li>‘’</li>
-<li>’’<br>反引号，反引号是扩展功能的引号，允许其他字符串以${…}的形式嵌入<br>var foo=’This a test’;<br>foo=foo+’XXX’<br>可用的函数：indexOf(),charAt(),match(),search(),replace(),toUpperCase(),toLowerCase(),slice(),substr()</li>
-</ol>
-<h3 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h3><p>truthy：真值(Not falsy: all objects,non-empty strings,non-zero numbers,function,etc.)<br>falsy：虚值(例：false,””,0,null,undefined,NaN)</p>
-<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>null==undefine<br>typeof(null)!=typeof(undefine)<br>//(typeof可以作为一个操作(typeof x)使用，也可以作为一个函数使用(typeof(x))两者运行结果一样)<br>//Number(object)：将对象的值转化为数字；当对象为Date对象，返回1970年1月1日至今的毫秒数；当对象的值无法转化为狮子，返回NaN<br>Number(true)  //return 1<br>Number(false)  //return 0<br>Number(“   123  “)  //return 123<br>Number(“aa123”)  //return NaN</p>
-<h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><p>console.log():能够看到结构化的东西(console:控制台)<br>会不断打印你页面的操作<br>将’”use strict”‘写在script/function开头</p>
-<h3 id="函数声明-Declaration"><a href="#函数声明-Declaration" class="headerlink" title="函数声明(Declaration)"></a>函数声明(Declaration)</h3><p>function sayHi(){<br>    alert(“Hello”);<br>}</p>
-<h3 id="函数表达式-Expreesion"><a href="#函数表达式-Expreesion" class="headerlink" title="函数表达式(Expreesion)"></a>函数表达式(Expreesion)</h3><p>var sayHi(){<br>    alert(“Hello”);<br>} /<br>var sayHi=function (){<br>    alert(“Hello”);<br>}</p>
-<h2 id="hoisting（提升）"><a href="#hoisting（提升）" class="headerlink" title="hoisting（提升）"></a>hoisting（提升）</h2><p>在JavaScript中，可以在使用变量之后对其进行声明<br>提升:即将所有声明提升到当前作用域顶部的默认行为<br>//JavaScript只提升声明，不支持初始化</p>
-<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>有block scope(区块范围)<br>例<br>var x=10; //10<br>{<br>    var x=2; //2<br>}<br>//2</p>
-<p>var x=10; //10<br>{<br>    let x=2; //2<br>}<br>//10</p>
-<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>作用类似let，只是不可以重新分配<br>var x=10； //10<br>{<br>    const x=2； //2<br>}<br>//10</p>
-<p>const cars=[“Saab”,”Volvo”,”Bmw”];<br>cars[0]=”Toyota”; //change an element<br>cars.push(“Audi”); //add an element</p>
-<h2 id="面向对象编程：继承"><a href="#面向对象编程：继承" class="headerlink" title="面向对象编程：继承"></a>面向对象编程：继承</h2><p>JavaScript：每一个对象实例(prototype object)都有一个原型对象(object)</p>
-<h2 id="prototypes-inheritance-继承"><a href="#prototypes-inheritance-继承" class="headerlink" title="prototypes (inheritance 继承)"></a>prototypes (inheritance 继承)</h2><p>只修改你的prototype，永远不要修改standard JavaScript objects</p>
-<h2 id="Functional-Programing"><a href="#Functional-Programing" class="headerlink" title="Functional Programing"></a>Functional Programing</h2><p>基本上可以但不能完全避免functional style<br>使用callback(回调函数)完成异步事件</p>
-<h3 id="数组式映射方法"><a href="#数组式映射方法" class="headerlink" title="数组式映射方法"></a>数组式映射方法</h3><p>创建一个新数组，并为每一个数组元素调用一个函数<br>array.map(function(currentValue,index,arr),thisValue)</p>
-<h3 id="数组过滤器方法"><a href="#数组过滤器方法" class="headerlink" title="数组过滤器方法"></a>数组过滤器方法</h3><p>创建一个数组，填充通过测试(作为函数提供)的所有数组元素<br>不为没有值的数组元素执行函数<br>不更改原始数组<br>array.filter(function(currentValue,index,arr),thisValue)</p>
-<h3 id="数组reduce方法"><a href="#数组reduce方法" class="headerlink" title="数组reduce方法"></a>数组reduce方法</h3><p>将数组缩减为单个值<br>array.reduce(function(total,currentValue,currentindex,arr),initialValue)</p>
-<h3 id="Arrow-function-箭头函数"><a href="#Arrow-function-箭头函数" class="headerlink" title="Arrow function 箭头函数"></a>Arrow function 箭头函数</h3><p>箭头函数不重定义函数<br>例：<br>newArr=anArr.map(function(val,ind)){<br>    return val<em>ind;<br>}<br>newArr=anArr.map((val,ind)=&gt;val</em>ind)</p>
-<p>例：<br>/<em>anArr.filter(value=&gt;value&lt;45).map((value,ind)=&gt;value</em>dind).reduce((total,value)=&gt;total+vaue);</p>
-<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>确保某些代码直到另一些代码执行完毕再执行</p>
-<h2 id="first-class-function"><a href="#first-class-function" class="headerlink" title="first-class function"></a>first-class function</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/11/前端/JavaScript/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前端/web" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/11/前端/web/">web</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/11/前端/web/" class="archive-article-date">
-  	<time datetime="2019-10-11T06:08:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="函数表达式-要先执行"><a href="#函数表达式-要先执行" class="headerlink" title="函数表达式(要先执行)"></a>函数表达式(要先执行)</h2><p>sayHi(“John”); //error<br>var sayHi()=function(name){<br>    alert(‘Hello,${name}’);<br>}</p>
-<h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><p>sayHi(“John”);<br>function sayHi(name){<br>    alert(‘Hello,${name}’);<br>}</p>
-<h2 id="arrow-function-箭头函数"><a href="#arrow-function-箭头函数" class="headerlink" title="arrow function (箭头函数)"></a>arrow function (箭头函数)</h2><p>let func=(argc1,argc2,…)=&gt;{expreesion}<br>即：<br>let func=function(a,b){<br>    return a+b;<br>}<br> ask{<br> “Do you aggree?”,<br> ()=&gt;{alert(“You are aggree.”)}<br> ()=&gt;{alert(“You are disagree.”)}<br>}</p>
-<h2 id="object-对象"><a href="#object-对象" class="headerlink" title="object(对象)"></a>object(对象)</h2><p>有不同的属性(不同属性有自己的类型和值)<br>let user={};<br>添加属性： user.name=”Fred”;<br>删除属性：dalete user.name；<br>遍历对象：Object.keys(list);  //显示属性<br>Object.values(list);  //显示属性值</p>
-<h2 id="arrays-数组"><a href="#arrays-数组" class="headerlink" title="arrays(数组)"></a>arrays(数组)</h2><p>let array=[1,2,3];<br>arrray[5]=”FooBar”</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>var ages=[32,33,46,13];<br>function checkAdult(age){<br>    return age&gt;=18;<br>}<br>function myFunction(){<br>    return ages.filter(checkAdult);<br>}</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/11/前端/web/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1016,7 +922,7 @@ htmlspecialchars(输入的字符串)</code></pre><h3 id="XSS-stored-存储型跨
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 John Doe
+    		&copy; 2020 John Doe
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1099,6 +1005,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">网络基本知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">搭建博客</a>
               </li>
              
@@ -1115,15 +1029,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">XSS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Web攻击</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
             
             <div class="clearfix"></div>
